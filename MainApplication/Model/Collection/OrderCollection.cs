@@ -44,7 +44,8 @@ namespace MainApplication.Model
                                 Personnel = new PersonnelModel() 
                                 {
                                     Id = o.Personnel.IdPersonnel, LastName = o.Personnel.LastName, FirstName = o.Personnel.FirstName,
-                                    SoName = o.Personnel.SoName
+                                    SoName = o.Personnel.SoName, Adress = o.Personnel.Adress, Phone = o.Personnel.Phone,
+                                    Post = o.Personnel.Post.Post
                                 },
                                 Comment = o.Comment,
                                 Summa = o.OrderStorageSaleGoods.Sum(s => s.Count * s.PriceOfUnit)

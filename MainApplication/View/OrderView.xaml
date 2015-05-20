@@ -7,8 +7,8 @@
              xmlns:obj="clr-namespace:MainApplication.Model"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="1024" >
-    
-    <Grid Name="ucGrid">
+
+        <Grid Name="ucGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="250"/>
@@ -23,7 +23,7 @@
                 <DataGridTextColumn Header="Партнер" Binding="{Binding Path=Partner.Name}" />
                 <DataGridTextColumn Header="Дата приема" Binding="{Binding Path=PeriodDate}" />
                 <DataGridTextColumn Header="Склад" Binding="{Binding Path=Storage.Name}" />
-                <DataGridTextColumn Header="Сотрудник" Binding="{Binding Path=Personnel.Little}" />
+                <DataGridTextColumn Header="Сотрудник" Binding="{Binding Path=Personnel.LittleName}" />
                 <DataGridTextColumn Header="Сумма" Binding="{Binding Path=Summa}" />
             </DataGrid.Columns>
         </DataGrid>
@@ -44,14 +44,42 @@
                 <StackPanel>
                     <Border BorderBrush="White" BorderThickness="0,1" Padding="10,5">
                         <StackPanel>
-                            <TextBlock Text="Ордер:" Style="{StaticResource TextBlockSectionTitle}" />
-                            <TextBlock  Name="tbl_remontCom" TextWrapping="Wrap" />
+                            <TextBlock Text="Partner:" Style="{StaticResource TextBlockSectionTitle}" />                        
+                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Partner.Name}" />
+                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Partner.Adress}" />
+                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Partner.Data}" />
+                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Partner.Phone}" />
+                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Partner.Inn}" />
+                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Partner.Bik}" />
+                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Partner.Director}" />
                         </StackPanel>
                     </Border>
                     <Border BorderBrush="White" BorderThickness="0,0,0,1" Padding="10,5">
                         <StackPanel>
-                            <TextBlock Text="СОСТОЯНИЕ УСТРОЙСТВА ПРИ ПРИЁМЕ:" Style="{StaticResource TextBlockSectionTitle}" />
-                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Id}" Name="tbl_remontSost" TextWrapping="Wrap" />
+                            <TextBlock Text="Storage" Style="{StaticResource TextBlockSectionTitle}" />
+                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Storage.Name}" />
+                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Storage.Adress}" />
+                        </StackPanel>
+                    </Border>
+                    <Border BorderBrush="White" BorderThickness="0,0,0,1" Padding="10,5">
+                        <StackPanel>
+                            <TextBlock Text="Personnel" Style="{StaticResource TextBlockSectionTitle}" />
+                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Personnel.FullName}" />
+                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Personnel.Post}" />
+                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Personnel.Phone}" />
+                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Personnel.Adress}" />
+                        </StackPanel>
+                    </Border>
+                    <Border BorderBrush="White" BorderThickness="0,0,0,1" Padding="10,5">
+                        <StackPanel>
+                            <TextBlock Text="Деньги" Style="{StaticResource TextBlockSectionTitle}" />
+                            <TextBlock Text="Что-то придумать"  TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+                    <Border BorderBrush="White" BorderThickness="0,0,0,1" Padding="10,5">
+                        <StackPanel>
+                            <TextBlock Text="Комментарии" Style="{StaticResource TextBlockSectionTitle}" />
+                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Comment}"  TextWrapping="Wrap" />
                         </StackPanel>
                     </Border>
                 </StackPanel>

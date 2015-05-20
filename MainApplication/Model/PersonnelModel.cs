@@ -27,9 +27,14 @@ namespace MainApplication.Model
         public string Post { get; set; }
         public string Password { get; set; }
 
-        public string Little 
+        public string LittleName 
         {
             get { return String.Format("{0} {1}.{2}.", LastName, FirstName[0], SoName[0]); }
+        }
+
+        public string FullName
+        {
+            get { return String.Format("{0} {1} {2}", LastName, FirstName, SoName); }
         }
     }
 }

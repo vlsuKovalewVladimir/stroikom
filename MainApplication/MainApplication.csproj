@@ -111,6 +111,7 @@
     </Compile>
     <Compile Include="Model\GoodsModel.cs" />
     <Compile Include="Model\Collection\OrderCollection.cs" />
+    <Compile Include="Model\OrderGoodsModel.cs" />
     <Compile Include="Model\OrderModel.cs" />
     <Compile Include="Model\PartnerModel.cs" />
     <Compile Include="Model\PersonnelModel.cs" />

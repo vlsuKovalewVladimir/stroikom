@@ -20,7 +20,7 @@ namespace MainApplication.Model
         public string Comment { set; get; }
         public double Summa { set; get; }
 
-        public ICollection<GoodsModel> Goods 
+        public ICollection<OrderGoodsModel> Goods 
         {
             get
             {
@@ -28,16 +28,25 @@ namespace MainApplication.Model
                 {
                     var goods = from g in db.OrderStorageSaleGoods
                                 where g.OrderOrSale_Id == this.Id
-                                select new GoodsModel()
+                                select new OrderGoodsModel()
                                 {
-                                    Name = g.Goods.Name
+                                    Id = g.IdGoods,
+                                    Goods = new GoodsModel() 
+                                    {
+                                        Id = g.Goods.IdGoods, Name = g.Goods.Name, 
+                                        Article = g.Goods.Article, Description = g.Goods.Description
+                                    },
+                                    Count = g.Count,
+                                    Module = g.Module.LittleModule,
+                                    PriceOfUnit = g.PriceOfUnit,
+                                    Comment = g.Comment,
+                                    OrderOrStorageOrSale = g.OrderOrStorageOrSale,
+                                    isDelete = g.isDelete
                                 };
 
                     return goods.ToList();
                 } 
-            }
-
-            
+            }   
         }
 
         public ICollection<CashModel> Cash { set; get; }

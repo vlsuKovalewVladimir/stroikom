@@ -31,33 +31,16 @@ namespace MainApplication.View
             InitializeComponent();
             this.IsVisibleChanged += OrderView_IsVisibleChanged;
 
-
-
-            this.oc = new OrderCollection();
-            ucGrid.DataContext = oc;
-
-            b_add.Click += (object sender, RoutedEventArgs e) => 
-            {
-                oc.Add(new OrderModel() { Id = 555 });
-            };
-
-            b_delete.Click += (object sender, RoutedEventArgs e) =>
-            {
-                oc.Remove((OrderModel)dg_main.SelectedItem);
-            };            
+            this.oc = new OrderCollection();          
         }
 
 
         
         void OrderView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            
+        {   
             if ((bool)e.OldValue)
                 return;
-
-            
-            //dg_main.up
-         
+            ucGrid.DataContext = oc;
         }
     }
 }

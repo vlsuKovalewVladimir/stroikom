@@ -7,11 +7,6 @@
              xmlns:obj="clr-namespace:MainApplication.Model"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="1024" >
-    <UserControl.Resources>
-        <obj:OrderCollection x:Key="OrderCollectionData" />
-    </UserControl.Resources>
-
-    <!-- DataContext="{Binding Source={StaticResource OrderCollectionData}}"-->
     
     <Grid Name="ucGrid">
         <Grid.ColumnDefinitions>
@@ -20,8 +15,17 @@
         </Grid.ColumnDefinitions>
 
         <my:RoundedBox Margin="10" />
-        <DataGrid Name="dg_main" Margin="20" Style="{StaticResource DataGridStyle}" ItemsSource="{Binding}" AutoGenerateColumns="True" >
-            
+        <DataGrid Name="dg_main" Margin="20" Style="{StaticResource DataGridStyle}" ItemsSource="{Binding}" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding Path=Id}" />
+                <DataGridTextColumn Header="Дата" Binding="{Binding Path=Date}" />
+                <DataGridTextColumn Header="Статус" Binding="{Binding Path=Status}" />
+                <DataGridTextColumn Header="Партнер" Binding="{Binding Path=Partner.Name}" />
+                <DataGridTextColumn Header="Дата приема" Binding="{Binding Path=PeriodDate}" />
+                <DataGridTextColumn Header="Склад" Binding="{Binding Path=Storage.Name}" />
+                <DataGridTextColumn Header="Сотрудник" Binding="{Binding Path=Personnel.Little}" />
+                <DataGridTextColumn Header="Сумма" Binding="{Binding Path=Summa}" />
+            </DataGrid.Columns>
         </DataGrid>
 
         <my:RoundedBox Grid.Column="1" Margin="10"/>

@@ -1,0 +1,895 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище MainApplication.StroikomDb" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cash">
+          <Key>
+            <PropertyRef Name="id_cash" />
+          </Key>
+          <Property Name="id_cash" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="discription" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="sum" Type="double" Nullable="false" />
+          <Property Name="operation_id" Type="int" Nullable="false" />
+          <Property Name="dogovor" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="order_or_sale_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="goods">
+          <Key>
+            <PropertyRef Name="id_goods" />
+          </Key>
+          <Property Name="id_goods" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="article" Type="varchar" MaxLength="45" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="module">
+          <Key>
+            <PropertyRef Name="id_module" />
+          </Key>
+          <Property Name="id_module" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="little_module" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="full_module" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="operation">
+          <Key>
+            <PropertyRef Name="id_operation" />
+          </Key>
+          <Property Name="id_operation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="operation_vid" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="order_or_sale">
+          <Key>
+            <PropertyRef Name="id_order_or_sale" />
+          </Key>
+          <Property Name="id_order_or_sale" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_order_or_sale" Type="date" Nullable="false" />
+          <Property Name="status_id" Type="int" Nullable="false" />
+          <Property Name="partner_id" Type="int" Nullable="false" />
+          <Property Name="period_date" Type="date" Nullable="false" />
+          <Property Name="storage_id" Type="int" Nullable="false" />
+          <Property Name="is_order" Type="bool" Nullable="false" />
+          <Property Name="personnel_id" Type="int" Nullable="false" />
+          <Property Name="comment" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="order_storage_sale_goods">
+          <Key>
+            <PropertyRef Name="id_goods" />
+          </Key>
+          <Property Name="id_goods" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="goods_id" Type="int" Nullable="false" />
+          <Property Name="count" Type="int" Nullable="false" />
+          <Property Name="module_id" Type="int" Nullable="false" />
+          <Property Name="price_of_unit" Type="double" Nullable="false" />
+          <Property Name="comment" Type="varchar" MaxLength="255" />
+          <Property Name="order_storage_sale" Type="int" Nullable="false" />
+          <Property Name="order_or_sale_id" Type="int" Nullable="false" />
+          <Property Name="is_delete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="partner">
+          <Key>
+            <PropertyRef Name="id_partner" />
+          </Key>
+          <Property Name="id_partner" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="adress" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="data" Type="date" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="relationship_id" Type="int" Nullable="false" />
+          <Property Name="inn" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="bik" Type="varchar" MaxLength="9" />
+          <Property Name="director" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personnel">
+          <Key>
+            <PropertyRef Name="id_personnel" />
+          </Key>
+          <Property Name="id_personnel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lastname" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="soname" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="dtr" Type="date" Nullable="false" />
+          <Property Name="gender" Type="bool" Nullable="false" />
+          <Property Name="adress" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="45" />
+          <Property Name="post_id" Type="int" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="post">
+          <Key>
+            <PropertyRef Name="id_post" />
+          </Key>
+          <Property Name="id_post" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="post" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="discription" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="relationship">
+          <Key>
+            <PropertyRef Name="id_relationship" />
+          </Key>
+          <Property Name="id_relationship" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="relationship" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="id_status" />
+          </Key>
+          <Property Name="id_status" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="storage">
+          <Key>
+            <PropertyRef Name="id_storage" />
+          </Key>
+          <Property Name="id_storage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ardess" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="task">
+          <Key>
+            <PropertyRef Name="id_task" />
+          </Key>
+          <Property Name="id_task" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="task" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="start_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="time" Type="int" Nullable="false" />
+          <Property Name="performance" Type="bool" Nullable="false" />
+          <Property Name="personnel_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_cash_operation1">
+          <End Role="operation" Type="Self.operation" Multiplicity="1" />
+          <End Role="cash" Type="Self.cash" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="operation">
+              <PropertyRef Name="id_operation" />
+            </Principal>
+            <Dependent Role="cash">
+              <PropertyRef Name="operation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cash_order_or_sale1">
+          <End Role="order_or_sale" Type="Self.order_or_sale" Multiplicity="1" />
+          <End Role="cash" Type="Self.cash" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order_or_sale">
+              <PropertyRef Name="id_order_or_sale" />
+            </Principal>
+            <Dependent Role="cash">
+              <PropertyRef Name="order_or_sale_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_order_and_sale_personnel1">
+          <End Role="personnel" Type="Self.personnel" Multiplicity="1" />
+          <End Role="order_or_sale" Type="Self.order_or_sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personnel">
+              <PropertyRef Name="id_personnel" />
+            </Principal>
+            <Dependent Role="order_or_sale">
+              <PropertyRef Name="personnel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_order_goods_goods1">
+          <End Role="goods" Type="Self.goods" Multiplicity="1" />
+          <End Role="order_storage_sale_goods" Type="Self.order_storage_sale_goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="goods">
+              <PropertyRef Name="id_goods" />
+            </Principal>
+            <Dependent Role="order_storage_sale_goods">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_order_goods_module1">
+          <End Role="module" Type="Self.module" Multiplicity="1" />
+          <End Role="order_storage_sale_goods" Type="Self.order_storage_sale_goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="module">
+              <PropertyRef Name="id_module" />
+            </Principal>
+            <Dependent Role="order_storage_sale_goods">
+              <PropertyRef Name="module_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_order_partner1">
+          <End Role="partner" Type="Self.partner" Multiplicity="1" />
+          <End Role="order_or_sale" Type="Self.order_or_sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="partner">
+              <PropertyRef Name="id_partner" />
+            </Principal>
+            <Dependent Role="order_or_sale">
+              <PropertyRef Name="partner_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_order_status1">
+          <End Role="status" Type="Self.status" Multiplicity="1" />
+          <End Role="order_or_sale" Type="Self.order_or_sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="id_status" />
+            </Principal>
+            <Dependent Role="order_or_sale">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_order_storage_sale_goods_order_or_sale1">
+          <End Role="order_or_sale" Type="Self.order_or_sale" Multiplicity="1" />
+          <End Role="order_storage_sale_goods" Type="Self.order_storage_sale_goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order_or_sale">
+              <PropertyRef Name="id_order_or_sale" />
+            </Principal>
+            <Dependent Role="order_storage_sale_goods">
+              <PropertyRef Name="order_or_sale_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_order_storage1">
+          <End Role="storage" Type="Self.storage" Multiplicity="1" />
+          <End Role="order_or_sale" Type="Self.order_or_sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="storage">
+              <PropertyRef Name="id_storage" />
+            </Principal>
+            <Dependent Role="order_or_sale">
+              <PropertyRef Name="storage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_partner_relationship">
+          <End Role="relationship" Type="Self.relationship" Multiplicity="1" />
+          <End Role="partner" Type="Self.partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="relationship">
+              <PropertyRef Name="id_relationship" />
+            </Principal>
+            <Dependent Role="partner">
+              <PropertyRef Name="relationship_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personnel_post1">
+          <End Role="post" Type="Self.post" Multiplicity="1" />
+          <End Role="personnel" Type="Self.personnel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="post">
+              <PropertyRef Name="id_post" />
+            </Principal>
+            <Dependent Role="personnel">
+              <PropertyRef Name="post_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_task_personnel1">
+          <End Role="personnel" Type="Self.personnel" Multiplicity="1" />
+          <End Role="task" Type="Self.task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personnel">
+              <PropertyRef Name="id_personnel" />
+            </Principal>
+            <Dependent Role="task">
+              <PropertyRef Name="personnel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище MainApplicationStroikomDbContainer">
+          <EntitySet Name="cash" EntityType="Self.cash" Schema="db_stroikom" store:Type="Tables" />
+          <EntitySet Name="goods" EntityType="Self.goods" Schema="db_stroikom" store:Type="Tables" />
+          <EntitySet Name="module" EntityType="Self.module" Schema="db_stroikom" store:Type="Tables" />
+          <EntitySet Name="operation" EntityType="Self.operation" Schema="db_stroikom" store:Type="Tables" />
+          <EntitySet Name="order_or_sale" EntityType="Self.order_or_sale" Schema="db_stroikom" store:Type="Tables" />
+          <EntitySet Name="order_storage_sale_goods" EntityType="Self.order_storage_sale_goods" Schema="db_stroikom" store:Type="Tables" />
+          <EntitySet Name="partner" EntityType="Self.partner" Schema="db_stroikom" store:Type="Tables" />
+          <EntitySet Name="personnel" EntityType="Self.personnel" Schema="db_stroikom" store:Type="Tables" />
+          <EntitySet Name="post" EntityType="Self.post" Schema="db_stroikom" store:Type="Tables" />
+          <EntitySet Name="relationship" EntityType="Self.relationship" Schema="db_stroikom" store:Type="Tables" />
+          <EntitySet Name="status" EntityType="Self.status" Schema="db_stroikom" store:Type="Tables" />
+          <EntitySet Name="storage" EntityType="Self.storage" Schema="db_stroikom" store:Type="Tables" />
+          <EntitySet Name="task" EntityType="Self.task" Schema="db_stroikom" store:Type="Tables" />
+          <AssociationSet Name="fk_cash_operation1" Association="Self.fk_cash_operation1">
+            <End Role="operation" EntitySet="operation" />
+            <End Role="cash" EntitySet="cash" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cash_order_or_sale1" Association="Self.fk_cash_order_or_sale1">
+            <End Role="order_or_sale" EntitySet="order_or_sale" />
+            <End Role="cash" EntitySet="cash" />
+          </AssociationSet>
+          <AssociationSet Name="fk_order_and_sale_personnel1" Association="Self.fk_order_and_sale_personnel1">
+            <End Role="personnel" EntitySet="personnel" />
+            <End Role="order_or_sale" EntitySet="order_or_sale" />
+          </AssociationSet>
+          <AssociationSet Name="fk_order_goods_goods1" Association="Self.fk_order_goods_goods1">
+            <End Role="goods" EntitySet="goods" />
+            <End Role="order_storage_sale_goods" EntitySet="order_storage_sale_goods" />
+          </AssociationSet>
+          <AssociationSet Name="fk_order_goods_module1" Association="Self.fk_order_goods_module1">
+            <End Role="module" EntitySet="module" />
+            <End Role="order_storage_sale_goods" EntitySet="order_storage_sale_goods" />
+          </AssociationSet>
+          <AssociationSet Name="fk_order_partner1" Association="Self.fk_order_partner1">
+            <End Role="partner" EntitySet="partner" />
+            <End Role="order_or_sale" EntitySet="order_or_sale" />
+          </AssociationSet>
+          <AssociationSet Name="fk_order_status1" Association="Self.fk_order_status1">
+            <End Role="status" EntitySet="status" />
+            <End Role="order_or_sale" EntitySet="order_or_sale" />
+          </AssociationSet>
+          <AssociationSet Name="fk_order_storage_sale_goods_order_or_sale1" Association="Self.fk_order_storage_sale_goods_order_or_sale1">
+            <End Role="order_or_sale" EntitySet="order_or_sale" />
+            <End Role="order_storage_sale_goods" EntitySet="order_storage_sale_goods" />
+          </AssociationSet>
+          <AssociationSet Name="fk_order_storage1" Association="Self.fk_order_storage1">
+            <End Role="storage" EntitySet="storage" />
+            <End Role="order_or_sale" EntitySet="order_or_sale" />
+          </AssociationSet>
+          <AssociationSet Name="fk_partner_relationship" Association="Self.fk_partner_relationship">
+            <End Role="relationship" EntitySet="relationship" />
+            <End Role="partner" EntitySet="partner" />
+          </AssociationSet>
+          <AssociationSet Name="fk_personnel_post1" Association="Self.fk_personnel_post1">
+            <End Role="post" EntitySet="post" />
+            <End Role="personnel" EntitySet="personnel" />
+          </AssociationSet>
+          <AssociationSet Name="fk_task_personnel1" Association="Self.fk_task_personnel1">
+            <End Role="personnel" EntitySet="personnel" />
+            <End Role="task" EntitySet="task" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MainApplication.StroikomDb" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DbCash">
+          <Key>
+            <PropertyRef Name="IdCash" />
+          </Key>
+          <Property Name="IdCash" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Discription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Sum" Type="Double" Nullable="false" />
+          <Property Name="Operation_id" Type="Int32" Nullable="false" />
+          <Property Name="Dogovor" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrderOrSale_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Operation" Relationship="Self.fk_cash_operation1" FromRole="cash" ToRole="operation" />
+          <NavigationProperty Name="OrderOrSale" Relationship="Self.fk_cash_order_or_sale1" FromRole="cash" ToRole="order_or_sale" />
+        </EntityType>
+        <EntityType Name="DbGoods">
+          <Key>
+            <PropertyRef Name="IdGoods" />
+          </Key>
+          <Property Name="IdGoods" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Article" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OrderStorageSaleGoods" Relationship="Self.fk_order_goods_goods1" FromRole="goods" ToRole="order_storage_sale_goods" />
+        </EntityType>
+        <EntityType Name="DbModules">
+          <Key>
+            <PropertyRef Name="IdModule" />
+          </Key>
+          <Property Name="IdModule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LittleModule" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FullModule" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="OrderStorageSaleGoods" Relationship="Self.fk_order_goods_module1" FromRole="module" ToRole="order_storage_sale_goods" />
+        </EntityType>
+        <EntityType Name="DbOperations">
+          <Key>
+            <PropertyRef Name="IdOperation" />
+          </Key>
+          <Property Name="IdOperation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OperationVid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cashs" Relationship="Self.fk_cash_operation1" FromRole="operation" ToRole="cash" />
+        </EntityType>
+        <EntityType Name="DbOrdersOrSales">
+          <Key>
+            <PropertyRef Name="IdOrderOrSale" />
+          </Key>
+          <Property Name="IdOrderOrSale" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateOrderOrSale" Type="DateTime" Nullable="false" />
+          <Property Name="Status_id" Type="Int32" Nullable="false" />
+          <Property Name="Partner_id" Type="Int32" Nullable="false" />
+          <Property Name="PeriodDate" Type="DateTime" Nullable="false" />
+          <Property Name="Storage_id" Type="Int32" Nullable="false" />
+          <Property Name="isOrder" Type="Boolean" Nullable="false" />
+          <Property Name="Personnel_id" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cashs" Relationship="Self.fk_cash_order_or_sale1" FromRole="order_or_sale" ToRole="cash" />
+          <NavigationProperty Name="Personnel" Relationship="Self.fk_order_and_sale_personnel1" FromRole="order_or_sale" ToRole="personnel" />
+          <NavigationProperty Name="Partner" Relationship="Self.fk_order_partner1" FromRole="order_or_sale" ToRole="partner" />
+          <NavigationProperty Name="Status" Relationship="Self.fk_order_status1" FromRole="order_or_sale" ToRole="status" />
+          <NavigationProperty Name="OrderStorageSaleGoods" Relationship="Self.fk_order_storage_sale_goods_order_or_sale1" FromRole="order_or_sale" ToRole="order_storage_sale_goods" />
+          <NavigationProperty Name="Storage" Relationship="Self.fk_order_storage1" FromRole="order_or_sale" ToRole="storage" />
+        </EntityType>
+        <EntityType Name="DbOrderStorageSaleGoods">
+          <Key>
+            <PropertyRef Name="IdGoods" />
+          </Key>
+          <Property Name="IdGoods" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Goods_id" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="Module_id" Type="Int32" Nullable="false" />
+          <Property Name="PriceOfUnit" Type="Double" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OrderOrStorageOrSale" Type="Int32" Nullable="false" />
+          <Property Name="OrderOrSale_Id" Type="Int32" Nullable="false" />
+          <Property Name="isDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Goods" Relationship="Self.fk_order_goods_goods1" FromRole="order_storage_sale_goods" ToRole="goods" />
+          <NavigationProperty Name="Module" Relationship="Self.fk_order_goods_module1" FromRole="order_storage_sale_goods" ToRole="module" />
+          <NavigationProperty Name="OrderOrSale" Relationship="Self.fk_order_storage_sale_goods_order_or_sale1" FromRole="order_storage_sale_goods" ToRole="order_or_sale" />
+        </EntityType>
+        <EntityType Name="DbPartners">
+          <Key>
+            <PropertyRef Name="IdPartner" />
+          </Key>
+          <Property Name="IdPartner" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Relationship_id" Type="Int32" Nullable="false" />
+          <Property Name="Inn" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Bik" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Director" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="OrderOrSales" Relationship="Self.fk_order_partner1" FromRole="partner" ToRole="order_or_sale" />
+          <NavigationProperty Name="Relationship" Relationship="Self.fk_partner_relationship" FromRole="partner" ToRole="relationship" />
+        </EntityType>
+        <EntityType Name="DbPersonnels">
+          <Key>
+            <PropertyRef Name="IdPersonnel" />
+          </Key>
+          <Property Name="IdPersonnel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SoName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dtr" Type="DateTime" Nullable="false" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Post_id" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="OrderOrSale" Relationship="Self.fk_order_and_sale_personnel1" FromRole="personnel" ToRole="order_or_sale" />
+          <NavigationProperty Name="Post" Relationship="Self.fk_personnel_post1" FromRole="personnel" ToRole="post" />
+          <NavigationProperty Name="Tasks" Relationship="Self.fk_task_personnel1" FromRole="personnel" ToRole="task" />
+        </EntityType>
+        <EntityType Name="DbPosts">
+          <Key>
+            <PropertyRef Name="id_post" />
+          </Key>
+          <Property Name="id_post" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Post" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Discription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Personnels" Relationship="Self.fk_personnel_post1" FromRole="post" ToRole="personnel" />
+        </EntityType>
+        <EntityType Name="DbRelationships">
+          <Key>
+            <PropertyRef Name="IdRelationship" />
+          </Key>
+          <Property Name="IdRelationship" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Relationship" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Partners" Relationship="Self.fk_partner_relationship" FromRole="relationship" ToRole="partner" />
+        </EntityType>
+        <EntityType Name="DbStatus">
+          <Key>
+            <PropertyRef Name="IdStatus" />
+          </Key>
+          <Property Name="IdStatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameStatus" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="OrderOrSales" Relationship="Self.fk_order_status1" FromRole="status" ToRole="order_or_sale" />
+        </EntityType>
+        <EntityType Name="DbStorages">
+          <Key>
+            <PropertyRef Name="IdStorage" />
+          </Key>
+          <Property Name="IdStorage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ardess" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="OrderOrSales" Relationship="Self.fk_order_storage1" FromRole="storage" ToRole="order_or_sale" />
+        </EntityType>
+        <EntityType Name="DbTask">
+          <Key>
+            <PropertyRef Name="IdTask" />
+          </Key>
+          <Property Name="IdTask" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameTask" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" />
+          <Property Name="Time" Type="Int32" Nullable="false" />
+          <Property Name="Performance" Type="Boolean" Nullable="false" />
+          <Property Name="Personnel_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Personnel" Relationship="Self.fk_task_personnel1" FromRole="task" ToRole="personnel" />
+        </EntityType>
+        <Association Name="fk_cash_operation1">
+          <End Role="operation" Type="MainApplication.StroikomDb.DbOperations" Multiplicity="1" />
+          <End Role="cash" Type="MainApplication.StroikomDb.DbCash" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="operation">
+              <PropertyRef Name="IdOperation" />
+            </Principal>
+            <Dependent Role="cash">
+              <PropertyRef Name="Operation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cash_order_or_sale1">
+          <End Role="order_or_sale" Type="MainApplication.StroikomDb.DbOrdersOrSales" Multiplicity="1" />
+          <End Role="cash" Type="MainApplication.StroikomDb.DbCash" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order_or_sale">
+              <PropertyRef Name="IdOrderOrSale" />
+            </Principal>
+            <Dependent Role="cash">
+              <PropertyRef Name="OrderOrSale_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_order_goods_goods1">
+          <End Role="goods" Type="MainApplication.StroikomDb.DbGoods" Multiplicity="1" />
+          <End Role="order_storage_sale_goods" Type="MainApplication.StroikomDb.DbOrderStorageSaleGoods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="goods">
+              <PropertyRef Name="IdGoods" />
+            </Principal>
+            <Dependent Role="order_storage_sale_goods">
+              <PropertyRef Name="Goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_order_goods_module1">
+          <End Role="module" Type="MainApplication.StroikomDb.DbModules" Multiplicity="1" />
+          <End Role="order_storage_sale_goods" Type="MainApplication.StroikomDb.DbOrderStorageSaleGoods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="module">
+              <PropertyRef Name="IdModule" />
+            </Principal>
+            <Dependent Role="order_storage_sale_goods">
+              <PropertyRef Name="Module_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_order_and_sale_personnel1">
+          <End Role="personnel" Type="MainApplication.StroikomDb.DbPersonnels" Multiplicity="1" />
+          <End Role="order_or_sale" Type="MainApplication.StroikomDb.DbOrdersOrSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personnel">
+              <PropertyRef Name="IdPersonnel" />
+            </Principal>
+            <Dependent Role="order_or_sale">
+              <PropertyRef Name="Personnel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_order_partner1">
+          <End Role="partner" Type="MainApplication.StroikomDb.DbPartners" Multiplicity="1" />
+          <End Role="order_or_sale" Type="MainApplication.StroikomDb.DbOrdersOrSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="partner">
+              <PropertyRef Name="IdPartner" />
+            </Principal>
+            <Dependent Role="order_or_sale">
+              <PropertyRef Name="Partner_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_order_status1">
+          <End Role="status" Type="MainApplication.StroikomDb.DbStatus" Multiplicity="1" />
+          <End Role="order_or_sale" Type="MainApplication.StroikomDb.DbOrdersOrSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="IdStatus" />
+            </Principal>
+            <Dependent Role="order_or_sale">
+              <PropertyRef Name="Status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_order_storage_sale_goods_order_or_sale1">
+          <End Role="order_or_sale" Type="MainApplication.StroikomDb.DbOrdersOrSales" Multiplicity="1" />
+          <End Role="order_storage_sale_goods" Type="MainApplication.StroikomDb.DbOrderStorageSaleGoods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order_or_sale">
+              <PropertyRef Name="IdOrderOrSale" />
+            </Principal>
+            <Dependent Role="order_storage_sale_goods">
+              <PropertyRef Name="OrderOrSale_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_order_storage1">
+          <End Role="storage" Type="MainApplication.StroikomDb.DbStorages" Multiplicity="1" />
+          <End Role="order_or_sale" Type="MainApplication.StroikomDb.DbOrdersOrSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="storage">
+              <PropertyRef Name="IdStorage" />
+            </Principal>
+            <Dependent Role="order_or_sale">
+              <PropertyRef Name="Storage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_partner_relationship">
+          <End Role="relationship" Type="MainApplication.StroikomDb.DbRelationships" Multiplicity="1" />
+          <End Role="partner" Type="MainApplication.StroikomDb.DbPartners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="relationship">
+              <PropertyRef Name="IdRelationship" />
+            </Principal>
+            <Dependent Role="partner">
+              <PropertyRef Name="Relationship_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personnel_post1">
+          <End Role="post" Type="MainApplication.StroikomDb.DbPosts" Multiplicity="1" />
+          <End Role="personnel" Type="MainApplication.StroikomDb.DbPersonnels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="post">
+              <PropertyRef Name="id_post" />
+            </Principal>
+            <Dependent Role="personnel">
+              <PropertyRef Name="Post_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_task_personnel1">
+          <End Role="personnel" Type="MainApplication.StroikomDb.DbPersonnels" Multiplicity="1" />
+          <End Role="task" Type="MainApplication.StroikomDb.DbTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personnel">
+              <PropertyRef Name="IdPersonnel" />
+            </Principal>
+            <Dependent Role="task">
+              <PropertyRef Name="Personnel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Db_StroikomEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cash" EntityType="MainApplication.StroikomDb.DbCash" />
+          <EntitySet Name="Goods" EntityType="MainApplication.StroikomDb.DbGoods" />
+          <EntitySet Name="Modules" EntityType="MainApplication.StroikomDb.DbModules" />
+          <EntitySet Name="Operations" EntityType="MainApplication.StroikomDb.DbOperations" />
+          <EntitySet Name="OrdersOrSales" EntityType="MainApplication.StroikomDb.DbOrdersOrSales" />
+          <EntitySet Name="OrderStorageSaleGoods" EntityType="MainApplication.StroikomDb.DbOrderStorageSaleGoods" />
+          <EntitySet Name="Partners" EntityType="MainApplication.StroikomDb.DbPartners" />
+          <EntitySet Name="Personnels" EntityType="MainApplication.StroikomDb.DbPersonnels" />
+          <EntitySet Name="Post" EntityType="MainApplication.StroikomDb.DbPosts" />
+          <EntitySet Name="Relationships" EntityType="MainApplication.StroikomDb.DbRelationships" />
+          <EntitySet Name="Status" EntityType="MainApplication.StroikomDb.DbStatus" />
+          <EntitySet Name="Storages" EntityType="MainApplication.StroikomDb.DbStorages" />
+          <EntitySet Name="Tasks" EntityType="MainApplication.StroikomDb.DbTask" />
+          <AssociationSet Name="fk_cash_operation1" Association="Self.fk_cash_operation1">
+            <End Role="operation" EntitySet="Operations" />
+            <End Role="cash" EntitySet="Cash" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cash_order_or_sale1" Association="Self.fk_cash_order_or_sale1">
+            <End Role="order_or_sale" EntitySet="OrdersOrSales" />
+            <End Role="cash" EntitySet="Cash" />
+          </AssociationSet>
+          <AssociationSet Name="fk_order_goods_goods1" Association="Self.fk_order_goods_goods1">
+            <End Role="goods" EntitySet="Goods" />
+            <End Role="order_storage_sale_goods" EntitySet="OrderStorageSaleGoods" />
+          </AssociationSet>
+          <AssociationSet Name="fk_order_goods_module1" Association="Self.fk_order_goods_module1">
+            <End Role="module" EntitySet="Modules" />
+            <End Role="order_storage_sale_goods" EntitySet="OrderStorageSaleGoods" />
+          </AssociationSet>
+          <AssociationSet Name="fk_order_and_sale_personnel1" Association="Self.fk_order_and_sale_personnel1">
+            <End Role="personnel" EntitySet="Personnels" />
+            <End Role="order_or_sale" EntitySet="OrdersOrSales" />
+          </AssociationSet>
+          <AssociationSet Name="fk_order_partner1" Association="Self.fk_order_partner1">
+            <End Role="partner" EntitySet="Partners" />
+            <End Role="order_or_sale" EntitySet="OrdersOrSales" />
+          </AssociationSet>
+          <AssociationSet Name="fk_order_status1" Association="Self.fk_order_status1">
+            <End Role="status" EntitySet="Status" />
+            <End Role="order_or_sale" EntitySet="OrdersOrSales" />
+          </AssociationSet>
+          <AssociationSet Name="fk_order_storage_sale_goods_order_or_sale1" Association="Self.fk_order_storage_sale_goods_order_or_sale1">
+            <End Role="order_or_sale" EntitySet="OrdersOrSales" />
+            <End Role="order_storage_sale_goods" EntitySet="OrderStorageSaleGoods" />
+          </AssociationSet>
+          <AssociationSet Name="fk_order_storage1" Association="Self.fk_order_storage1">
+            <End Role="storage" EntitySet="Storages" />
+            <End Role="order_or_sale" EntitySet="OrdersOrSales" />
+          </AssociationSet>
+          <AssociationSet Name="fk_partner_relationship" Association="Self.fk_partner_relationship">
+            <End Role="relationship" EntitySet="Relationships" />
+            <End Role="partner" EntitySet="Partners" />
+          </AssociationSet>
+          <AssociationSet Name="fk_personnel_post1" Association="Self.fk_personnel_post1">
+            <End Role="post" EntitySet="Post" />
+            <End Role="personnel" EntitySet="Personnels" />
+          </AssociationSet>
+          <AssociationSet Name="fk_task_personnel1" Association="Self.fk_task_personnel1">
+            <End Role="personnel" EntitySet="Personnels" />
+            <End Role="task" EntitySet="Tasks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище MainApplicationStroikomDbContainer" CdmEntityContainer="Db_StroikomEntities">
+          <EntitySetMapping Name="Cash">
+            <EntityTypeMapping TypeName="MainApplication.StroikomDb.DbCash">
+              <MappingFragment StoreEntitySet="cash">
+                <ScalarProperty Name="IdCash" ColumnName="id_cash" />
+                <ScalarProperty Name="Discription" ColumnName="discription" />
+                <ScalarProperty Name="Date" ColumnName="date" />
+                <ScalarProperty Name="Sum" ColumnName="sum" />
+                <ScalarProperty Name="Operation_id" ColumnName="operation_id" />
+                <ScalarProperty Name="Dogovor" ColumnName="dogovor" />
+                <ScalarProperty Name="OrderOrSale_Id" ColumnName="order_or_sale_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goods">
+            <EntityTypeMapping TypeName="MainApplication.StroikomDb.DbGoods">
+              <MappingFragment StoreEntitySet="goods">
+                <ScalarProperty Name="IdGoods" ColumnName="id_goods" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Article" ColumnName="article" />
+                <ScalarProperty Name="Description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modules">
+            <EntityTypeMapping TypeName="MainApplication.StroikomDb.DbModules">
+              <MappingFragment StoreEntitySet="module">
+                <ScalarProperty Name="IdModule" ColumnName="id_module" />
+                <ScalarProperty Name="LittleModule" ColumnName="little_module" />
+                <ScalarProperty Name="FullModule" ColumnName="full_module" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operations">
+            <EntityTypeMapping TypeName="MainApplication.StroikomDb.DbOperations">
+              <MappingFragment StoreEntitySet="operation">
+                <ScalarProperty Name="IdOperation" ColumnName="id_operation" />
+                <ScalarProperty Name="OperationVid" ColumnName="operation_vid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrdersOrSales">
+            <EntityTypeMapping TypeName="MainApplication.StroikomDb.DbOrdersOrSales">
+              <MappingFragment StoreEntitySet="order_or_sale">
+                <ScalarProperty Name="IdOrderOrSale" ColumnName="id_order_or_sale" />
+                <ScalarProperty Name="DateOrderOrSale" ColumnName="date_order_or_sale" />
+                <ScalarProperty Name="Status_id" ColumnName="status_id" />
+                <ScalarProperty Name="Partner_id" ColumnName="partner_id" />
+                <ScalarProperty Name="PeriodDate" ColumnName="period_date" />
+                <ScalarProperty Name="Storage_id" ColumnName="storage_id" />
+                <ScalarProperty Name="isOrder" ColumnName="is_order" />
+                <ScalarProperty Name="Personnel_id" ColumnName="personnel_id" />
+                <ScalarProperty Name="Comment" ColumnName="comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderStorageSaleGoods">
+            <EntityTypeMapping TypeName="MainApplication.StroikomDb.DbOrderStorageSaleGoods">
+              <MappingFragment StoreEntitySet="order_storage_sale_goods">
+                <ScalarProperty Name="IdGoods" ColumnName="id_goods" />
+                <ScalarProperty Name="Goods_id" ColumnName="goods_id" />
+                <ScalarProperty Name="Count" ColumnName="count" />
+                <ScalarProperty Name="Module_id" ColumnName="module_id" />
+                <ScalarProperty Name="PriceOfUnit" ColumnName="price_of_unit" />
+                <ScalarProperty Name="Comment" ColumnName="comment" />
+                <ScalarProperty Name="OrderOrStorageOrSale" ColumnName="order_storage_sale" />
+                <ScalarProperty Name="OrderOrSale_Id" ColumnName="order_or_sale_id" />
+                <ScalarProperty Name="isDelete" ColumnName="is_delete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Partners">
+            <EntityTypeMapping TypeName="MainApplication.StroikomDb.DbPartners">
+              <MappingFragment StoreEntitySet="partner">
+                <ScalarProperty Name="IdPartner" ColumnName="id_partner" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Adress" ColumnName="adress" />
+                <ScalarProperty Name="Data" ColumnName="data" />
+                <ScalarProperty Name="Phone" ColumnName="phone" />
+                <ScalarProperty Name="Relationship_id" ColumnName="relationship_id" />
+                <ScalarProperty Name="Inn" ColumnName="inn" />
+                <ScalarProperty Name="Bik" ColumnName="bik" />
+                <ScalarProperty Name="Director" ColumnName="director" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personnels">
+            <EntityTypeMapping TypeName="MainApplication.StroikomDb.DbPersonnels">
+              <MappingFragment StoreEntitySet="personnel">
+                <ScalarProperty Name="IdPersonnel" ColumnName="id_personnel" />
+                <ScalarProperty Name="LastName" ColumnName="lastname" />
+                <ScalarProperty Name="FirstName" ColumnName="firstname" />
+                <ScalarProperty Name="SoName" ColumnName="soname" />
+                <ScalarProperty Name="Dtr" ColumnName="dtr" />
+                <ScalarProperty Name="Gender" ColumnName="gender" />
+                <ScalarProperty Name="Adress" ColumnName="adress" />
+                <ScalarProperty Name="Phone" ColumnName="phone" />
+                <ScalarProperty Name="Post_id" ColumnName="post_id" />
+                <ScalarProperty Name="Password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="MainApplication.StroikomDb.DbPosts">
+              <MappingFragment StoreEntitySet="post">
+                <ScalarProperty Name="id_post" ColumnName="id_post" />
+                <ScalarProperty Name="Post" ColumnName="post" />
+                <ScalarProperty Name="Discription" ColumnName="discription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Relationships">
+            <EntityTypeMapping TypeName="MainApplication.StroikomDb.DbRelationships">
+              <MappingFragment StoreEntitySet="relationship">
+                <ScalarProperty Name="IdRelationship" ColumnName="id_relationship" />
+                <ScalarProperty Name="Relationship" ColumnName="relationship" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="MainApplication.StroikomDb.DbStatus">
+              <MappingFragment StoreEntitySet="status">
+                <ScalarProperty Name="IdStatus" ColumnName="id_status" />
+                <ScalarProperty Name="NameStatus" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Storages">
+            <EntityTypeMapping TypeName="MainApplication.StroikomDb.DbStorages">
+              <MappingFragment StoreEntitySet="storage">
+                <ScalarProperty Name="IdStorage" ColumnName="id_storage" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Ardess" ColumnName="ardess" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tasks">
+            <EntityTypeMapping TypeName="MainApplication.StroikomDb.DbTask">
+              <MappingFragment StoreEntitySet="task">
+                <ScalarProperty Name="IdTask" ColumnName="id_task" />
+                <ScalarProperty Name="NameTask" ColumnName="task" />
+                <ScalarProperty Name="StartDate" ColumnName="start_date" />
+                <ScalarProperty Name="Time" ColumnName="time" />
+                <ScalarProperty Name="Performance" ColumnName="performance" />
+                <ScalarProperty Name="Personnel_id" ColumnName="personnel_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

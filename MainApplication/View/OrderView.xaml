@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="MainApplication.View.OrderView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:my="clr-namespace:MainApplication.View"
+             xmlns:obj="clr-namespace:MainApplication.Model"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="1024" >
+    <UserControl.Resources>
+        <obj:OrderCollection x:Key="OrderCollectionData" />
+    </UserControl.Resources>
+
+    <!-- DataContext="{Binding Source={StaticResource OrderCollectionData}}"-->
+    
+    <Grid Name="ucGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="250"/>
+        </Grid.ColumnDefinitions>
+
+        <my:RoundedBox Margin="10" />
+        <DataGrid Name="dg_main" Margin="20" Style="{StaticResource DataGridStyle}" ItemsSource="{Binding}" AutoGenerateColumns="True" >
+            
+        </DataGrid>
+
+        <my:RoundedBox Grid.Column="1" Margin="10"/>
+        <ScrollViewer Grid.Column="1" Margin="10" VerticalScrollBarVisibility="Auto" Grid.RowSpan="2">
+            <StackPanel>
+
+                <StackPanel Margin="0,10" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Name="b_add" ToolTip="Добавить" MinWidth="50" Template="{StaticResource AddTableButtonTemplate}" />
+                    <Button Name="b_edit" ToolTip="Редактировать" MinWidth="50" Template="{StaticResource EditTableButtonTemplate}" />
+                    <Button Name="b_delete" ToolTip="Удалить" MinWidth="50" Template="{StaticResource DeleteTableButtonTemplate}" />
+                </StackPanel>
+
+                <Button Visibility="Collapsed" Content="Цикл" Height="23" Name="button1" Width="74" Margin="10" />
+
+                <!--Дополнительные данные-->
+                <StackPanel>
+                    <Border BorderBrush="White" BorderThickness="0,1" Padding="10,5">
+                        <StackPanel>
+                            <TextBlock Text="Ордер:" Style="{StaticResource TextBlockSectionTitle}" />
+                            <TextBlock  Name="tbl_remontCom" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+                    <Border BorderBrush="White" BorderThickness="0,0,0,1" Padding="10,5">
+                        <StackPanel>
+                            <TextBlock Text="СОСТОЯНИЕ УСТРОЙСТВА ПРИ ПРИЁМЕ:" Style="{StaticResource TextBlockSectionTitle}" />
+                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Id}" Name="tbl_remontSost" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

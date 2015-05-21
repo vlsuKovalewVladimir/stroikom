@@ -140,6 +140,9 @@
     <Compile Include="View\StorageView.xaml.cs">
       <DependentUpon>StorageView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\WpfMessageBox.xaml.cs">
+      <DependentUpon>WpfMessageBox.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -165,6 +168,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\StorageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WpfMessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -214,7 +221,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\error.png" />
+    <Resource Include="Resources\info.png" />
+    <Resource Include="Resources\question.png" />
+    <Resource Include="Resources\warning.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\background.png" />
     <Resource Include="Resources\shadow_b.png" />

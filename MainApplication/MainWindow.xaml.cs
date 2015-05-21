@@ -59,7 +59,7 @@ namespace MainApplication
                 UserControlOrderView.Visibility = System.Windows.Visibility.Visible;
 
             if (textBlock == MenuStorageTextBlock)
-                UserControlStorageView.Visibility = System.Windows.Visibility.Visible;
+                UserControlStorageView.Visibility = System.Windows.Visibility.Visible; 
         }
 
 

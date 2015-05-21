@@ -31,15 +31,18 @@ namespace MainApplication.View
             InitializeComponent();
             this.IsVisibleChanged += OrderView_IsVisibleChanged;
 
-            this.oc = new OrderCollection();          
+            this.oc = new OrderCollection();
+
+            b_add.Click += (object sender, RoutedEventArgs e) => 
+            {
+                WpfMessageBox.Show(this, "Cool");
+            };
         }
 
-
-        
         void OrderView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {   
-            if ((bool)e.OldValue)
-                return;
+            if ((bool)e.OldValue) return;
+
             ucGrid.DataContext = oc;
         }
     }

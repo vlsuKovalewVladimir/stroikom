@@ -16,7 +16,7 @@ namespace MainApplication.Model
     public partial class Db_StroikomEntities : DbContext
     {
         public Db_StroikomEntities()
-            : base("name=Db_StroikomEntities4040")
+            : base("name=Db_StroikomEntities")
         {
         }
     

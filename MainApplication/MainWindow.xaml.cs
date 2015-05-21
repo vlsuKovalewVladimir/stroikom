@@ -23,13 +23,12 @@ namespace MainApplication
     {
         public MainWindow()
         {
-            
-            
             InitializeComponent();
 
-            
+            PersonnelNameTextBlock.Text = Parameters.Instance.Personnel.LittleName;
+            PersonnelPostTextBlock.Text = Parameters.Instance.Personnel.Post;
 
-            MenuOrderTextBlock.MouseUp   += MenuTextBlock_MouseUp;
+            MenuOrderTextBlock.MouseUp += MenuTextBlock_MouseUp;
             MenuStorageTextBlock.MouseUp += MenuTextBlock_MouseUp;
             MenuSaleTextBlock.MouseUp += MenuTextBlock_MouseUp;
             MenuCashTextBlock.MouseUp += MenuTextBlock_MouseUp;

@@ -15,9 +15,9 @@ namespace MainApplication.Model
     
     public partial class Db_StroikomEntities : DbContext
     {
-        public Db_StroikomEntities()
-            : base("name=Db_StroikomEntities")
+        public Db_StroikomEntities()        
         {
+            Database.Connection.ConnectionString = Parameters.Instance.ConnectionDb;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

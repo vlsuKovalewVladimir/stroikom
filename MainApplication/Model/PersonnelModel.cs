@@ -8,12 +8,19 @@ namespace MainApplication.Model
     class PersonnelModel
     {
         public PersonnelModel() {}
-        public PersonnelModel(int id, string lastName, string firstName, string soName)
+        public PersonnelModel(int id, string lastName, string firstName, string soName, DateTime dtr, bool gender, string adress,
+            string phone, string post, string password)
         {
             this.Id = id;
             this.LastName = lastName;
             this.FirstName = firstName;
             this.SoName = soName;
+            this.Dtr = dtr;
+            this.Gender = gender;
+            this.Adress = adress;
+            this.Phone = phone;
+            this.Post = post;
+            this.Password = password;
         }
 
         public int Id { set; get; }
@@ -26,6 +33,15 @@ namespace MainApplication.Model
         public string Phone { get; set; }
         public string Post { get; set; }
         public string Password { get; set; }
+
+        public PostEnum PostE 
+        {
+            get {
+                return (Post == "Директор") ? PostEnum.Director :
+                       (Post == "Логист") ? PostEnum.Logist :
+                       (Post == "Кладовщик") ? PostEnum.StoragePost : PostEnum.NonPost;
+            } 
+        }
 
         public string LittleName 
         {

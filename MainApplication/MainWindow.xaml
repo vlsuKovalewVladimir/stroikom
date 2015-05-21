@@ -77,9 +77,9 @@
                  BorderBrush="{StaticResource HorizontalLightBrush}" Background="{StaticResource sideBarHeaderBarBG}" CornerRadius="10" BorderThickness="2">
             <StackPanel VerticalAlignment="Center">
                 <TextBlock Text="Пользователь:" Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="14" Foreground="{StaticResource NormalBrush}" />
-                <TextBlock Name="tb_people" Text="Иванов" Margin="0,0,10,0" HorizontalAlignment="Right" FontSize="12" Foreground="{StaticResource NormalBrush}"/>
+                <TextBlock Name="PersonnelNameTextBlock" Text="Иванов" Margin="0,0,10,0" HorizontalAlignment="Right" FontSize="12" Foreground="{StaticResource NormalBrush}"/>
                 <TextBlock Text="Должность:" Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="14" Foreground="{StaticResource NormalBrush}" />
-                <TextBlock Name="tb_post" Text="Директор" Margin="0,0,10,0" HorizontalAlignment="Right" FontSize="12" Foreground="{StaticResource NormalBrush}"/>
+                <TextBlock Name="PersonnelPostTextBlock" Text="Директор" Margin="0,0,10,0" HorizontalAlignment="Right" FontSize="12" Foreground="{StaticResource NormalBrush}"/>
             </StackPanel>
         </Border>
 

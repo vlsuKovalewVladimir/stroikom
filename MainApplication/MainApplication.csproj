@@ -69,6 +69,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Crypt.cs" />
     <Compile Include="Model\CashModel.cs" />
     <Compile Include="Model\DbCash.cs">
       <DependentUpon>StroikomDbModel.tt</DependentUpon>
@@ -115,6 +116,7 @@
     <Compile Include="Model\OrderModel.cs" />
     <Compile Include="Model\PartnerModel.cs" />
     <Compile Include="Model\PersonnelModel.cs" />
+    <Compile Include="Model\PostEnum.cs" />
     <Compile Include="Model\StorageModel.cs" />
     <Compile Include="Model\StroikomDbModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -131,6 +133,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StroikomDbModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Parameters.cs" />
     <Compile Include="SettingsConnectionWindow.xaml.cs">
       <DependentUpon>SettingsConnectionWindow.xaml</DependentUpon>
     </Compile>
@@ -152,8 +155,11 @@
     <Compile Include="View\StorageView.xaml.cs">
       <DependentUpon>StorageView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\WpfMessageBox.xaml.cs">
+    <Compile Include="WpfMessageBox.xaml.cs">
       <DependentUpon>WpfMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AuthorizationWindow.xaml.cs">
+      <DependentUpon>AuthorizationWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -199,7 +205,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\WpfMessageBox.xaml">
+    <Page Include="WpfMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AuthorizationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MainApplication.View
+namespace MainApplication
 {
     /// <summary>
     /// Логика взаимодействия для WpfMessageBox.xaml
@@ -141,7 +141,7 @@ namespace MainApplication.View
         {
             if (input == null) 
                 return null;
-            FrameworkElement res = input.Parent as FrameworkElement;
+            FrameworkElement res = input;
             while (!(res is Window))
                 res = res.Parent as FrameworkElement;
             return res as Window;

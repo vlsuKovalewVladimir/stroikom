@@ -1,0 +1,47 @@
+﻿<Window x:Class="MainApplication.StartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:my="clr-namespace:MainApplication.View"
+        WindowStartupLocation="CenterScreen"
+        Icon="/MainApplication;component/Resources/icon.ico"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent"
+        Topmost="True"
+        mc:Ignorable="d"  d:DesignWidth="410" MaxWidth="410" SizeToContent="Height">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <Border Background="{StaticResource SelectedBackgroundBrush}" 
+            Opacity="0.95" 
+            BorderThickness="5" 
+            CornerRadius="10" 
+            BorderBrush="{StaticResource SolidBorderBrush}" 
+            Grid.RowSpan="2"/>
+
+        <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">
+            <TextBlock FontSize="36" FontWeight="Bold" Foreground="{StaticResource DefaultedBorderBrush}"  Text="Стройком"  TextWrapping="NoWrap" VerticalAlignment="Center" />
+            <Image Margin="5,0,0,0" Stretch="None" Source="/MainApplication;component/Resources/icon.ico" VerticalAlignment="Center" />
+        </StackPanel>
+
+        <DockPanel Grid.Row="1">
+            <StackPanel Name="ProblemStackPanel" Margin="10" Visibility="Collapsed" DockPanel.Dock="Right" VerticalAlignment="Center" >
+                <Button Content="Настроить подключение" Name="SettingButton" Margin="0,0,0,1" />
+                <Button Content="Повторить" Name="RepeatButton" Margin="0,1,0,0" />
+                <Button Content="Выход" Name="ExitButton" Margin="0,1,0,0" />
+            </StackPanel>
+
+            <StackPanel Name="StasusStackPanel" Orientation="Horizontal">
+                <Viewbox Width="50" Height="50" Margin="10,10,0,10">
+                    <my:CircularProgressBar />
+                </Viewbox>
+
+                <TextBlock Name="StatusTextBlock" Text="Запуск приложения" TextWrapping="Wrap" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            </StackPanel>
+        </DockPanel>
+
+    </Grid>
+</Window>

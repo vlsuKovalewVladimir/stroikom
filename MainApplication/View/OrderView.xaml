@@ -8,14 +8,21 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="1024" >
 
-        <Grid Name="ucGrid">
-        <Grid.ColumnDefinitions>
+    <Grid Name="ucGrid">
+        <Grid.ColumnDefinitions> 
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
 
         <my:RoundedBox Margin="10" />
-        <DataGrid Name="dg_main" Margin="20" Style="{StaticResource DataGridStyle}" ItemsSource="{Binding}" AutoGenerateColumns="False" >
+        
+        
+        
+        <DataGrid Visibility="Visible" Name="dg_main" Margin="20" Style="{StaticResource DataGridStyle}" ItemsSource="{Binding}" AutoGenerateColumns="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Binding="{Binding Path=Id}" />
                 <DataGridTextColumn Header="Дата" Binding="{Binding Path=Date}" />

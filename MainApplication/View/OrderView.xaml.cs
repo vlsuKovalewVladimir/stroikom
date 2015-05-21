@@ -42,8 +42,7 @@ namespace MainApplication.View
         void OrderView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {   
             if ((bool)e.OldValue) return;
-
-            ucGrid.DataContext = oc;
+                ucGrid.DataContext = oc;
         }
     }
 }

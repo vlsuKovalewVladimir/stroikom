@@ -23,7 +23,11 @@ namespace MainApplication
     {
         public MainWindow()
         {
+            
+            
             InitializeComponent();
+
+            
 
             MenuOrderTextBlock.MouseUp   += MenuTextBlock_MouseUp;
             MenuStorageTextBlock.MouseUp += MenuTextBlock_MouseUp;

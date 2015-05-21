@@ -1,0 +1,123 @@
+﻿<UserControl x:Class="MainApplication.View.OrderAddView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:my="clr-namespace:MainApplication.View"
+             mc:Ignorable="d" 
+             d:DesignWidth="700" d:DesignHeight="500" >
+    <!--Style="{StaticResource UserControlAnimationVisibility}"-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <my:RoundedBox Grid.RowSpan="4" />
+
+        <Border BorderBrush="White" BorderThickness="0,0,0,2" Margin="5">
+            <DockPanel >
+                <Button Name="ExitButton" ToolTip="Отмена" DockPanel.Dock="Right" Template="{StaticResource RemoveXButtonTemplate}" MinWidth="0" MinHeight="0" IsCancel="True" />
+                <Button Name="SaveButton" ToolTip="Сохранить" DockPanel.Dock="Right" Template="{StaticResource AddButtonTemplate}" MinWidth="0" MinHeight="0" IsDefault="True" />
+                <Label Content="Добавить запись" Foreground="#FF2929D8" FontSize="14" />
+            </DockPanel>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Foreground="{StaticResource DisabledForegroundBrush}" Header="Партнеры" Margin="5" Grid.RowSpan="2">
+                <StackPanel Margin="5">
+                    <DockPanel>
+                        <Button Name="PartnerAddButton" ToolTip="Добавить" Template="{StaticResource AddButtonTemplate}" 
+                                MinWidth="0" MinHeight="0" DockPanel.Dock="Right"/>
+                        <ComboBox Margin="0,0,5,0" />
+                    </DockPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70" />
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Адрес:" Margin="0,5" />
+                        <TextBlock Text="" Grid.Column="1" Margin="0,5" TextWrapping="Wrap" />
+
+                        <TextBlock Text="Дата:" Grid.Row="1" Margin="0,0,0,5"/>
+                        <TextBlock Text="" Grid.Row="1" Grid.Column="1" Margin="0,0,0,5" TextWrapping="Wrap"/>
+
+                        <TextBlock Text="Телефон:" Grid.Row="2" Margin="0,0,0,5" />
+                        <TextBlock Text="" Grid.Row="2" Grid.Column="1" Margin="0,0,0,5" TextWrapping="Wrap"/>
+
+                        <TextBlock Text="ИНН:" Grid.Row="3" Margin="0,0,0,5"/>
+                        <TextBlock Text="" Grid.Row="3" Grid.Column="1" Margin="0,0,0,5" TextWrapping="Wrap"/>
+
+                        <TextBlock Text="БИК:" Grid.Row="4" Margin="0,0,0,5" />
+                        <TextBlock Text="" Grid.Row="4" Grid.Column="1" Margin="0,0,0,5" TextWrapping="Wrap"/>
+
+                        <TextBlock Text="Директор:" Grid.Row="5"/>
+                        <TextBlock Text="" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap"/>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Foreground="{StaticResource DisabledForegroundBrush}" Header="Склад" Margin="5" Grid.Column="1">
+                <StackPanel Margin="5">
+                    <DockPanel>
+                        <Button Name="StorageAddButton" ToolTip="Добавить" Template="{StaticResource AddButtonTemplate}" 
+                                MinWidth="0" MinHeight="0" DockPanel.Dock="Right"/>
+                        <ComboBox Margin="0,0,5,0" />
+                    </DockPanel>
+                    <DockPanel Margin="0,5,0,0">
+                        <TextBlock Text="Адрес:   " />
+                        <TextBlock Text="" TextWrapping="Wrap"/>
+                    </DockPanel>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Foreground="{StaticResource DisabledForegroundBrush}" Header="Дополнительная информация" Margin="5" Grid.Row="1" Grid.Column="1">
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Дата поставки:"  Margin="0,0,0,5"/>
+                    <TextBox Grid.Column="1"  Margin="0,0,0,5" />
+                    <TextBlock Text="Комментарии:" Grid.Row="1" Margin="0,0,0,5"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="0,0,0,5" TextWrapping="Wrap" />
+                </Grid>
+            </GroupBox>
+        </Grid>
+
+        <DockPanel Grid.Row="2" Margin="5" VerticalAlignment="Center">
+            <TextBlock Text="   Товары" Foreground="#FF1B75BB" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
+                
+                <Button Name="GoodsAddButton" ToolTip="Добавить товар" MinWidth="40" Template="{StaticResource AddTableButtonTemplate}" />
+                <Button Name="GoodsEditButton" ToolTip="Редактировать товар" MinWidth="40" Template="{StaticResource EditTableButtonTemplate}" />
+                <Button Name="GoodsRemoveButton" ToolTip="Удалить товар" MinWidth="50" Template="{StaticResource DeleteTableButtonTemplate}" />
+            </StackPanel>
+        </DockPanel>
+
+        <DataGrid Grid.Row="3" Margin="5" MinHeight="150" Style="{StaticResource DataGridStyle}" Grid.RowSpan="2"/>
+    </Grid>
+</UserControl>

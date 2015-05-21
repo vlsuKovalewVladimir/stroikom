@@ -23,26 +23,27 @@ namespace MainApplication.View
     /// </summary>
     public partial class OrderView : UserControl
     {
-
-        private OrderCollection oc;
+        private OrderCollection orderCollection;
 
         public OrderView()
         {
             InitializeComponent();
-            this.IsVisibleChanged += OrderView_IsVisibleChanged;
 
-            this.oc = new OrderCollection();
+            this.orderCollection = new OrderCollection();
 
-            b_add.Click += (object sender, RoutedEventArgs e) => 
-            {
-                WpfMessageBox.Show(this, "Cool");
-            };
+            IsVisibleChanged += OrderView_IsVisibleChanged;
+            OrderAddButton.Click += OrderAddButton_Click;
         }
 
         void OrderView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {   
             if ((bool)e.OldValue) return;
-                ucGrid.DataContext = oc;
+                ucGrid.DataContext = orderCollection;
+        }
+
+        void OrderAddButton_Click(object sender, RoutedEventArgs e)
+        {
+            OrderAddUserControl.Visibility = Visibility.Visible;
         }
     }
 }

@@ -55,14 +55,14 @@ namespace MainApplication
         {
             TextBlock textBlock = sender as TextBlock;
 
-            UserControlOrderView.Visibility =
-                UserControlStorageView.Visibility = System.Windows.Visibility.Collapsed;
+            OrderUserControl.Visibility =
+                StorageUserControl.Visibility = System.Windows.Visibility.Collapsed;
 
             if (textBlock == MenuOrderTextBlock)
-                UserControlOrderView.Visibility = System.Windows.Visibility.Visible;
+                OrderUserControl.Visibility = System.Windows.Visibility.Visible;
 
             if (textBlock == MenuStorageTextBlock)
-                UserControlStorageView.Visibility = System.Windows.Visibility.Visible; 
+                StorageUserControl.Visibility = System.Windows.Visibility.Visible; 
         }
 
 

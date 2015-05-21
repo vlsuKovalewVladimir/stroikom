@@ -85,8 +85,8 @@
 
         <!--Основная часть-->
         <Grid Grid.Row="2" Grid.ColumnSpan="2">
-            <my:OrderView x:Name="UserControlOrderView" />
-            <my:StorageView x:Name="UserControlStorageView" Visibility="Collapsed" />
+            <my:OrderView x:Name="OrderUserControl" />
+            <my:StorageView x:Name="StorageUserControl" Visibility="Collapsed" />
         </Grid>
          
     </Grid>

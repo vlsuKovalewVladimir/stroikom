@@ -1520,7 +1520,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
+    
     <!--Выделнный пункт меню-->
     <RadialGradientBrush x:Key="TextBlockChecked">
         <GradientStop Color="#9AFFFFFF" Offset="0" />

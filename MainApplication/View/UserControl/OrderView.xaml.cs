@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 
 using System.Collections.ObjectModel;
 using MainApplication.Model;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 
 namespace MainApplication.View
 {
@@ -23,13 +25,13 @@ namespace MainApplication.View
     /// </summary>
     public partial class OrderView : UserControl
     {
-        private OrderCollection orderCollection;
+        private OrdersOrSalesCollection ordersOrSalesCollection;
 
         public OrderView()
         {
             InitializeComponent();
 
-            this.orderCollection = new OrderCollection();
+            ordersOrSalesCollection = new OrdersOrSalesCollection(true);
 
             IsVisibleChanged += OrderView_IsVisibleChanged;
             OrderAddButton.Click += OrderAddButton_Click;
@@ -38,11 +40,25 @@ namespace MainApplication.View
         void OrderView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {   
             if ((bool)e.OldValue) return;
-                ucGrid.DataContext = orderCollection;
+                ucGrid.DataContext = ordersOrSalesCollection;
         }
 
         void OrderAddButton_Click(object sender, RoutedEventArgs e)
         {
+
+            DbOrdersOrSales ordersOrSales = new DbOrdersOrSales() 
+            { 
+                DateOrderOrSale = DateTime.Now,
+                Status_id = 1,
+                Partner_id = 1,
+                PeriodDate = DateTime.Now,
+                Storage_id = 1,
+                isOrder = true,
+                Personnel_id = Parameters.Instance.Personnel.IdPersonnel
+            };
+
+            ordersOrSalesCollection.AddOrdersOrSales(ordersOrSales);
+
             OrderAddUserControl.Visibility = Visibility.Visible;
         }
     }

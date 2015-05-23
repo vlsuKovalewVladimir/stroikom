@@ -30,6 +30,16 @@ namespace MainApplication.Model
         public string Phone { get; set; }
         public int Post_id { get; set; }
         public string Password { get; set; }
+
+        public string LittleName
+        {
+            get { return String.Format("{0} {1}.{2}.", LastName, FirstName[0], SoName[0]); }
+        }
+
+        public string FullName
+        {
+            get { return String.Format("{0} {1} {2}", LastName, FirstName, SoName); }
+        }
     
         public virtual ICollection<DbOrdersOrSales> OrderOrSale { get; set; }
         public virtual DbPosts Post { get; set; }

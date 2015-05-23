@@ -110,22 +110,7 @@ namespace MainApplication
                 {
                     var p = db.Personnels.ToList().Single(pes =>
                       (pes.LastName + pes.IdPersonnel == this.login) && pes.Password == this.password);
-                    Parameters.Instance.Personnel = new Model.PersonnelModel(p.IdPersonnel, p.LastName, p.FirstName, p.SoName,
-                        p.Dtr, p.Gender, p.Adress, p.Phone, p.Post.Post, p.Password);
-                }
-                catch (System.Data.Entity.Core.EntityException ex)
-                {
-                    System.Diagnostics.Debug.Print(ex.Message);
-
-                    this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal,
-                    (ThreadStart)delegate()
-                    {
-                        StatusTextBlock.Text = "Ошибка при подключении";
-                        ProblemButtonStackPanel.Visibility = Visibility.Visible;
-                        ProgressBarView.Visibility = Visibility.Collapsed;
-                    });
-
-                    return;
+                    Parameters.Instance.Personnel = p;
                 }
                 catch (System.InvalidOperationException ex)
                 {
@@ -142,6 +127,21 @@ namespace MainApplication
 
                     return;
                 }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.Print(ex.Message);
+
+                    this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal,
+                    (ThreadStart)delegate()
+                    {
+                        StatusTextBlock.Text = "Ошибка при подключении";
+                        ProblemButtonStackPanel.Visibility = Visibility.Visible;
+                        ProgressBarView.Visibility = Visibility.Collapsed;
+                    });
+
+                    return;
+                }
+                
             }
 
             this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal,

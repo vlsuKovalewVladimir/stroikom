@@ -69,8 +69,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Crypt.cs" />
-    <Compile Include="Model\CashModel.cs" />
+    <Compile Include="HelperClass\Crypt.cs" />
     <Compile Include="Model\DbCash.cs">
       <DependentUpon>StroikomDbModel.tt</DependentUpon>
     </Compile>
@@ -110,14 +109,8 @@
     <Compile Include="Model\DbTask.cs">
       <DependentUpon>StroikomDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\GoodsModel.cs" />
-    <Compile Include="Model\Collection\OrderCollection.cs" />
-    <Compile Include="Model\OrderGoodsModel.cs" />
-    <Compile Include="Model\OrderModel.cs" />
-    <Compile Include="Model\PartnerModel.cs" />
-    <Compile Include="Model\PersonnelModel.cs" />
+    <Compile Include="Model\OrdersOrSalesCollection.cs" />
     <Compile Include="Model\PostEnum.cs" />
-    <Compile Include="Model\StorageModel.cs" />
     <Compile Include="Model\StroikomDbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -133,29 +126,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StroikomDbModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Parameters.cs" />
+    <Compile Include="HelperClass\Parameters.cs" />
     <Compile Include="SettingsConnectionWindow.xaml.cs">
       <DependentUpon>SettingsConnectionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\OrderAddView.xaml.cs">
+    <Compile Include="View\UserControl\OrderAddView.xaml.cs">
       <DependentUpon>OrderAddView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CircularProgressBar.xaml.cs">
+    <Compile Include="View\UserControl\CircularProgressBar.xaml.cs">
       <DependentUpon>CircularProgressBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\OrderView.xaml.cs">
+    <Compile Include="View\UserControl\OrderView.xaml.cs">
       <DependentUpon>OrderView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\RoundedBox.xaml.cs">
+    <Compile Include="View\UserControl\RoundedBox.xaml.cs">
       <DependentUpon>RoundedBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\StorageView.xaml.cs">
+    <Compile Include="View\UserControl\StorageView.xaml.cs">
       <DependentUpon>StorageView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WpfMessageBox.xaml.cs">
+    <Compile Include="View\Window\OrderGoodsWindow.xaml.cs">
+      <DependentUpon>OrderGoodsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\WpfMessageBox.xaml.cs">
       <DependentUpon>WpfMessageBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="AuthorizationWindow.xaml.cs">
@@ -185,27 +181,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\OrderAddView.xaml">
+    <Page Include="View\UserControl\OrderAddView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CircularProgressBar.xaml">
+    <Page Include="View\UserControl\CircularProgressBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\OrderView.xaml">
+    <Page Include="View\UserControl\OrderView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\RoundedBox.xaml">
+    <Page Include="View\UserControl\RoundedBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\StorageView.xaml">
+    <Page Include="View\UserControl\StorageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WpfMessageBox.xaml">
+    <Page Include="View\Window\OrderGoodsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Window\WpfMessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -282,6 +282,7 @@
   <ItemGroup>
     <Resource Include="Resources\icon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -7,7 +7,7 @@
              xmlns:obj="clr-namespace:MainApplication.Model"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="1024" >
-
+    
     <Grid Name="ucGrid">
         <Grid.ColumnDefinitions> 
             <ColumnDefinition Width="*"/>
@@ -19,15 +19,13 @@
         </Grid.RowDefinitions>
 
         <my:RoundedBox Margin="10" />
-        
-        
-        
-        <DataGrid Visibility="Visible" Name="dg_main" Margin="20" Style="{StaticResource DataGridStyle}" ItemsSource="{Binding}"
+
+        <DataGrid Visibility="Visible" Name="dg_main" Margin="20" ItemsSource="{Binding}" Style="{StaticResource DataGridStyle}" 
                   AutoGenerateColumns="False" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="№" Binding="{Binding Path=Id}" />
-                <DataGridTextColumn Header="Дата" Binding="{Binding Path=Date}" />
-                <DataGridTextColumn Header="Статус" Binding="{Binding Path=Status}" />
+                <DataGridTextColumn Header="№" Binding="{Binding Path=IdOrderOrSale}" />
+                <DataGridTextColumn Header="Дата" Binding="{Binding Path=DateOrderOrSale}" />
+                <DataGridTextColumn Header="Статус" Binding="{Binding Path=Status.NameStatus}" />
                 <DataGridTextColumn Header="Партнер" Binding="{Binding Path=Partner.Name}" />
                 <DataGridTextColumn Header="Дата приема" Binding="{Binding Path=PeriodDate}" />
                 <DataGridTextColumn Header="Склад" Binding="{Binding Path=Storage.Name}" />
@@ -68,14 +66,13 @@
                         <StackPanel>
                             <TextBlock Text="Storage" Style="{StaticResource TextBlockSectionTitle}" />
                             <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Storage.Name}" />
-                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Storage.Adress}" />
+                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Storage.Ardess}" />
                         </StackPanel>
                     </Border>
                     <Border BorderBrush="White" BorderThickness="0,0,0,1" Padding="10,5">
                         <StackPanel>
                             <TextBlock Text="Personnel" Style="{StaticResource TextBlockSectionTitle}" />
                             <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Personnel.FullName}" />
-                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Personnel.Post}" />
                             <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Personnel.Phone}" />
                             <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Personnel.Adress}" />
                         </StackPanel>

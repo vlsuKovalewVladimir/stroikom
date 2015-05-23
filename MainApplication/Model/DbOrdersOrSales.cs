@@ -29,6 +29,8 @@ namespace MainApplication.Model
         public bool isOrder { get; set; }
         public int Personnel_id { get; set; }
         public string Comment { get; set; }
+
+        public double Summa { get; set; }
     
         public virtual ICollection<DbCash> Cashs { get; set; }
         public virtual DbPersonnels Personnel { get; set; }

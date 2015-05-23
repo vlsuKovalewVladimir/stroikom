@@ -26,7 +26,7 @@ namespace MainApplication
             InitializeComponent();
 
             PersonnelNameTextBlock.Text = Parameters.Instance.Personnel.LittleName;
-            PersonnelPostTextBlock.Text = Parameters.Instance.Personnel.Post;
+            PersonnelPostTextBlock.Text = Parameters.Instance.PersonnelPost.ToString();
 
             MenuOrderTextBlock.MouseUp += MenuTextBlock_MouseUp;
             MenuStorageTextBlock.MouseUp += MenuTextBlock_MouseUp;

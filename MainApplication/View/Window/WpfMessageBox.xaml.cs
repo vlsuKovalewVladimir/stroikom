@@ -20,7 +20,7 @@ namespace MainApplication
     /// </summary>
     public partial class WpfMessageBox : Window
     {
-       private static WpfMessageBox _messageBox;
+        private static WpfMessageBox _messageBox;
         private static MessageBoxResult _result = MessageBoxResult.OK;
 
         public WpfMessageBox()

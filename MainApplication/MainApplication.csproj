@@ -153,8 +153,11 @@
     <Compile Include="View\UserControl\StorageView.xaml.cs">
       <DependentUpon>StorageView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Windows\OrderOrSaleGoodsWindow.xaml.cs">
-      <DependentUpon>OrderOrSaleGoodsWindow.xaml</DependentUpon>
+    <Compile Include="View\Windows\OrderAddGoodsWindow.xaml.cs">
+      <DependentUpon>OrderAddGoodsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\OrderOrSaleGoods.xaml.cs">
+      <DependentUpon>OrderOrSaleGoods.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\WpfMessageBox.xaml.cs">
       <DependentUpon>WpfMessageBox.xaml</DependentUpon>
@@ -206,7 +209,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Windows\OrderOrSaleGoodsWindow.xaml">
+    <Page Include="View\Windows\OrderAddGoodsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\OrderOrSaleGoods.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

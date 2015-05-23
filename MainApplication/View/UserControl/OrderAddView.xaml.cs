@@ -25,12 +25,12 @@ namespace MainApplication.View
         private StoragesCollection storagesCollection;
         private PartnersCollection partnersCollection;
         private OrderStorageSaleGoodsCollectoin orderStorageSaleGoodsCollectoin;
+        private OrdersOrSalesCollection ordersOrSalesCollection;
 
         public OrderAddView()
         {
             InitializeComponent();
 
-            this.IsVisibleChanged += OrderAddView_IsVisibleChanged;
 
             SaveButton.Click += SaveButton_Click;
             ExitButton.Click += ExitButton_Click;
@@ -43,9 +43,9 @@ namespace MainApplication.View
             GoodsRemoveButton.Click += GoodsRemoveButton_Click;
         }
 
-        private void OrderAddView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        internal void Show(OrdersOrSalesCollection orsc)
         {
-            if ((bool)e.OldValue) return;
+            ordersOrSalesCollection = orsc;
 
             storagesCollection = new StoragesCollection();
             StoragesComboBox.DataContext = storagesCollection;
@@ -55,11 +55,45 @@ namespace MainApplication.View
 
             orderStorageSaleGoodsCollectoin = new OrderStorageSaleGoodsCollectoin();
             GoodsDataGrid.DataContext = orderStorageSaleGoodsCollectoin;
+
+            this.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            DbStorages a = StoragesComboBox.SelectedItem as DbStorages;
+            if (StoragesComboBox.SelectedItem == null)
+            {
+                WpfMessageBox.Show(this, "Выберите склад", "Склад не выбран", MessageBoxImage.Error);
+                return;
+            }
+            if (PartnersComboBox.SelectedItem == null)
+            {
+                WpfMessageBox.Show(this, "Выберите партнера", "Партнер не выбран", MessageBoxImage.Error);
+                return;
+            }
+            if (orderStorageSaleGoodsCollectoin.Count == 0)
+            {
+                WpfMessageBox.Show(this, "Выберите товары", "Товары не выбраны", MessageBoxImage.Error);
+                return;
+            }
+
+            int storage_id = (StoragesComboBox.SelectedItem as DbStorages).IdStorage;
+            int partner_id = (PartnersComboBox.SelectedItem as DbPartners).IdPartner;
+
+            DbOrdersOrSales ordersOrSales = new DbOrdersOrSales()
+            {
+                DateOrderOrSale = DateTime.Now,
+                Status_id = 1,
+                Partner_id = partner_id,
+                PeriodDate = DateTime.Now,
+                Storage_id = storage_id,
+                isOrder = true,
+                Personnel_id = Parameters.Instance.Personnel.IdPersonnel
+            };
+
+            ordersOrSalesCollection.AddOrdersOrSales(ordersOrSales, orderStorageSaleGoodsCollectoin);
+
+            this.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
@@ -80,13 +114,12 @@ namespace MainApplication.View
 
         void GoodsAddButton_Click(object sender, RoutedEventArgs e)
         {
-            DbOrderStorageSaleGoods ossg = OrderOrSaleGoodsWindow.Show(this);
-
+            DbOrderStorageSaleGoods ossg = OrderAddGoodsWindow.Show(this);
             if (ossg != null)
             {
                 ossg.OrderOrStorageOrSale = 1;
                 orderStorageSaleGoodsCollectoin.AddGoodsNoSaveDb(ossg);
-            }
+            }  
         }
 
         void GoodsEditButton_Click(object sender, RoutedEventArgs e)

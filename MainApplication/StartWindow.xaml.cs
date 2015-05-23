@@ -147,10 +147,13 @@ namespace MainApplication
             this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal,
                     (ThreadStart)delegate()
                     {
+                        StatusTextBlock.Text = "Загрузка данных";
                         var tmpMainWindows = new MainWindow();
                         tmpMainWindows.Show();
                         this.Close();
                     });
+
+            
         }
     }
 }

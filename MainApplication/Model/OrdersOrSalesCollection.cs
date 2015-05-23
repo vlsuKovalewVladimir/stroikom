@@ -22,7 +22,7 @@ namespace MainApplication.Model
             }
         }
 
-        public void AddOrdersOrSales(DbOrdersOrSales ordersOrSales)
+        public void AddOrdersOrSales(DbOrdersOrSales ordersOrSales, OrderStorageSaleGoodsCollectoin orderStorageSaleGoodsCollectoin)
         {
             using (var db = new Db_StroikomEntities())
             {
@@ -30,9 +30,13 @@ namespace MainApplication.Model
                 db.SaveChanges();
                 int  i = ordersOrSales.IdOrderOrSale;
 
+                orderStorageSaleGoodsCollectoin.SaveDb(ordersOrSales);
+
                 IQueryable<DbOrdersOrSales> or = db.OrdersOrSales.Include("Personnel").Include("Status").Include("Storage").Include("Partner").Include("OrderStorageSaleGoods");
 
-                this.Add(or.Single(o => o.IdOrderOrSale == ordersOrSales.IdOrderOrSale));
+                DbOrdersOrSales tmp = or.Single(o => o.IdOrderOrSale == ordersOrSales.IdOrderOrSale);
+                tmp.Summa = tmp.OrderStorageSaleGoods.Sum(s => s.Count * s.PriceOfUnit);
+                this.Add(tmp);
                 
             }
         }

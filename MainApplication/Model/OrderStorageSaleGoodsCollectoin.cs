@@ -15,8 +15,8 @@ namespace MainApplication.Model
         {
             using (var db = new Db_StroikomEntities())
             {
-                IQueryable<DbOrderStorageSaleGoods> ossg = db.OrderStorageSaleGoods.Include("Module");
-                ossg.Where(o => o.OrderOrSale_Id == or.IdOrderOrSale).ToList().ForEach(o => this.Add(o));
+                IQueryable<DbOrderStorageSaleGoods> ossg = db.OrderStorageSaleGoods.Include("Module").Include("Goods");
+                ossg.Where(o => o.OrderOrSale_Id == or.IdOrderOrSale && !o.isDelete).ToList().ForEach(o => this.Add(o));
             }
         }
 

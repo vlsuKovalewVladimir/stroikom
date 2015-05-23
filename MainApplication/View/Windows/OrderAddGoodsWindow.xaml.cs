@@ -18,16 +18,16 @@ namespace MainApplication.View
     /// <summary>
     /// Логика взаимодействия для OrderOrSaleGoodsWindow.xaml
     /// </summary>
-    public partial class OrderOrSaleGoodsWindow : Window
+    public partial class OrderAddGoodsWindow : Window
     {    
-        private static OrderOrSaleGoodsWindow _OrderOrSaleGoodsWindow;
+        private static OrderAddGoodsWindow _OrderOrSaleGoodsWindow;
 
         private static ModuleCollection moduleCollection;
         private static GoodsCollection goodsCollection;
         private static DbOrderStorageSaleGoods orderStorageSaleGoods;
 
 
-        private OrderOrSaleGoodsWindow()
+        private OrderAddGoodsWindow()
         {
             InitializeComponent();
 
@@ -47,7 +47,7 @@ namespace MainApplication.View
         public static DbOrderStorageSaleGoods Show(FrameworkElement inputFrameworkElement)
         {
             Window inputWindow = helperFindWindow(inputFrameworkElement);
-            _OrderOrSaleGoodsWindow = new OrderOrSaleGoodsWindow();
+            _OrderOrSaleGoodsWindow = new OrderAddGoodsWindow();
             _OrderOrSaleGoodsWindow.Owner = inputWindow;
             inputWindow.Opacity = 0.6;
 

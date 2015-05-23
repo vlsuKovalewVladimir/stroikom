@@ -1,0 +1,37 @@
+﻿<Window x:Class="MainApplication.View.OrderOrSaleGoods"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent"
+        ShowInTaskbar="False" WindowStartupLocation="CenterOwner"
+        Width="634.795" Height="300"
+        Style="{StaticResource WindowAnimationVisibility}">
+
+    <Border  Background="{StaticResource SelectedBackgroundBrush}" BorderBrush="{StaticResource SolidBorderBrush}"
+		     Opacity="0.99" BorderThickness="5" CornerRadius="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Border BorderBrush="White" BorderThickness="0,0,0,2">
+                <DockPanel Margin="5">
+                    <Button x:Name="ExitButton" DockPanel.Dock="Right" MinWidth="0" MinHeight="0" IsCancel="True"
+						Template="{StaticResource RemoveXButtonTemplate}" />
+                    <TextBlock Text="Товары" Name="TitleTextBlock" VerticalAlignment="Center" Foreground="#FF2929D8" FontSize="14" />
+                </DockPanel>
+            </Border>
+            <DataGrid Grid.Row="2" x:Name="GoodsDataGrid" ItemsSource="{Binding}"   Margin="5"
+					Style="{StaticResource DataGridStyle}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="№" Binding="{Binding Path=IdGoods}" />
+                    <DataGridTextColumn Header="Название" Binding="{Binding Path=Goods.Name}" />
+                    <DataGridTextColumn Header="Количество" Binding="{Binding Path=Count}" />
+                    <DataGridTextColumn Header="Ед. измер." Binding="{Binding Path=Module.LittleModule}" />
+                    <DataGridTextColumn Header="Цена за штуку" Binding="{Binding Path=PriceOfUnit}" />
+                    <DataGridTextColumn Header="Комментарии" Binding="{Binding Path=Comment}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Border>
+</Window>

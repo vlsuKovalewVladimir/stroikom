@@ -32,35 +32,24 @@ namespace MainApplication.View
             InitializeComponent();
 
             ordersOrSalesCollection = new OrdersOrSalesCollection(true);
+            dg_main.DataContext = ordersOrSalesCollection;
 
-            IsVisibleChanged += OrderView_IsVisibleChanged;
+            dg_main.MouseDoubleClick += dg_main_MouseDoubleClick;
+
             OrderAddButton.Click += OrderAddButton_Click;
         }
 
-        void OrderView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {   
-            if ((bool)e.OldValue) return;
+        void dg_main_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DbOrdersOrSales os = dg_main.SelectedItem as DbOrdersOrSales;
+            if (os == null) return;
 
-            dg_main.DataContext = ordersOrSalesCollection;
+            OrderOrSaleGoods.Show(this, os);
         }
 
         void OrderAddButton_Click(object sender, RoutedEventArgs e)
         {
-
-            DbOrdersOrSales ordersOrSales = new DbOrdersOrSales() 
-            { 
-                DateOrderOrSale = DateTime.Now,
-                Status_id = 1,
-                Partner_id = 1,
-                PeriodDate = DateTime.Now,
-                Storage_id = 1,
-                isOrder = true,
-                Personnel_id = Parameters.Instance.Personnel.IdPersonnel
-            };
-
-            //ordersOrSalesCollection.AddOrdersOrSales(ordersOrSales);
-
-            OrderAddUserControl.Visibility = Visibility.Visible;
+            OrderAddUserControl.Show(ordersOrSalesCollection);           
         }
     }
 }

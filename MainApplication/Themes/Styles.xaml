@@ -1520,7 +1520,26 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
+    <!--Анимация при появлении Window-->
+    <Style TargetType="Window" x:Key="WindowAnimationVisibility">
+        <Style.Triggers>
+            <Trigger Property="Visibility" Value="Visible">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                    FillBehavior="Stop"
+                                    From="0" To="1"
+                                    Duration="0:0:0.3">
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <!--Выделнный пункт меню-->
     <RadialGradientBrush x:Key="TextBlockChecked">
         <GradientStop Color="#9AFFFFFF" Offset="0" />

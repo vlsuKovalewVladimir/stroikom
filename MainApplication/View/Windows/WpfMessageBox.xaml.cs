@@ -23,7 +23,7 @@ namespace MainApplication
         private static WpfMessageBox _messageBox;
         private static MessageBoxResult _result = MessageBoxResult.OK;
 
-        public WpfMessageBox()
+        private WpfMessageBox()
         {
             InitializeComponent();
         }
@@ -94,27 +94,27 @@ namespace MainApplication
             {
                 case MessageBoxImage.Error:
                     SystemSounds.Hand.Play();
-                    _messageBox.i_image.Source = new BitmapImage(new Uri(@"../Resources/error.png", UriKind.Relative));
+                    _messageBox.i_image.Source = new BitmapImage(new Uri(@"../../Resources/error.png", UriKind.Relative));
                     break;
 
                 case MessageBoxImage.Warning:
                     SystemSounds.Exclamation.Play();
-                    _messageBox.i_image.Source = new BitmapImage(new Uri(@"../Resources/warning.png", UriKind.Relative));
+                    _messageBox.i_image.Source = new BitmapImage(new Uri(@"../../Resources/warning.png", UriKind.Relative));
                     break;
 
                 case MessageBoxImage.Question:
                     SystemSounds.Question.Play();
-                    _messageBox.i_image.Source = new BitmapImage(new Uri(@"../Resources/question.png", UriKind.Relative));
+                    _messageBox.i_image.Source = new BitmapImage(new Uri(@"../../Resources/question.png", UriKind.Relative));
                     break;
 
                 case MessageBoxImage.Information:
                     SystemSounds.Asterisk.Play();
-                    _messageBox.i_image.Source = new BitmapImage(new Uri(@"../Resources/info.png", UriKind.Relative));
+                    _messageBox.i_image.Source = new BitmapImage(new Uri(@"../../Resources/info.png", UriKind.Relative));
                     break;
 
                 default:
                     SystemSounds.Beep.Play();
-                    _messageBox.i_image.Source = new BitmapImage(new Uri(@"../Resources/info.png", UriKind.Relative));
+                    _messageBox.i_image.Source = new BitmapImage(new Uri(@"../../Resources/info.png", UriKind.Relative));
                     break;
             }
 

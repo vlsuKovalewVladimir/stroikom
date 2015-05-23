@@ -40,7 +40,8 @@ namespace MainApplication.View
         void OrderView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {   
             if ((bool)e.OldValue) return;
-                ucGrid.DataContext = ordersOrSalesCollection;
+
+            dg_main.DataContext = ordersOrSalesCollection;
         }
 
         void OrderAddButton_Click(object sender, RoutedEventArgs e)
@@ -57,7 +58,7 @@ namespace MainApplication.View
                 Personnel_id = Parameters.Instance.Personnel.IdPersonnel
             };
 
-            ordersOrSalesCollection.AddOrdersOrSales(ordersOrSales);
+            //ordersOrSalesCollection.AddOrdersOrSales(ordersOrSales);
 
             OrderAddUserControl.Visibility = Visibility.Visible;
         }

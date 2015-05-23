@@ -8,26 +8,8 @@
         AllowsTransparency="True" WindowStyle="None" Background="Transparent"
         ShowInTaskbar="False" WindowStartupLocation="CenterOwner" 
         SizeToContent="WidthAndHeight"
+        Style="{StaticResource WindowAnimationVisibility}"
         MaxWidth="400" MinWidth="250">
-    <Window.Style>
-        <Style TargetType="Window">
-            <Style.Triggers>
-                <Trigger Property="Visibility" Value="Visible">
-                    <Trigger.EnterActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
-                                    FillBehavior="Stop"
-                                    From="0" To="1"
-                                    Duration="0:0:0.3">
-                                </DoubleAnimation>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.EnterActions>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </Window.Style>
 
     <Border  Background="{StaticResource SelectedBackgroundBrush}"
              BorderBrush="{StaticResource SolidBorderBrush}"

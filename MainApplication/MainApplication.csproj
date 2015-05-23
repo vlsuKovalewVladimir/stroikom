@@ -109,8 +109,13 @@
     <Compile Include="Model\DbTask.cs">
       <DependentUpon>StroikomDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\GoodsCollection.cs" />
+    <Compile Include="Model\ModuleCollection.cs" />
     <Compile Include="Model\OrdersOrSalesCollection.cs" />
+    <Compile Include="Model\OrderStorageSaleGoodsCollectoin.cs" />
+    <Compile Include="Model\PartnersCollection.cs" />
     <Compile Include="Model\PostEnum.cs" />
+    <Compile Include="Model\StoragesCollection.cs" />
     <Compile Include="Model\StroikomDbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -148,10 +153,10 @@
     <Compile Include="View\UserControl\StorageView.xaml.cs">
       <DependentUpon>StorageView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Window\OrderGoodsWindow.xaml.cs">
-      <DependentUpon>OrderGoodsWindow.xaml</DependentUpon>
+    <Compile Include="View\Windows\OrderOrSaleGoodsWindow.xaml.cs">
+      <DependentUpon>OrderOrSaleGoodsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Window\WpfMessageBox.xaml.cs">
+    <Compile Include="View\Windows\WpfMessageBox.xaml.cs">
       <DependentUpon>WpfMessageBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="AuthorizationWindow.xaml.cs">
@@ -201,11 +206,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Window\OrderGoodsWindow.xaml">
+    <Page Include="View\Windows\OrderOrSaleGoodsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Window\WpfMessageBox.xaml">
+    <Page Include="View\Windows\WpfMessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

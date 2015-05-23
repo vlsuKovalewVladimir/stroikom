@@ -3,16 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:obj="clr-namespace:MainApplication.Model"
              xmlns:my="clr-namespace:MainApplication.View"
              mc:Ignorable="d" 
              d:DesignWidth="700" d:DesignHeight="500" >
-    <!--Style="{StaticResource UserControlAnimationVisibility}"-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="150"/>
         </Grid.RowDefinitions>
 
         <my:RoundedBox Grid.RowSpan="4" />
@@ -40,7 +40,7 @@
                     <DockPanel>
                         <Button Name="PartnerAddButton" ToolTip="Добавить" Template="{StaticResource AddButtonTemplate}" 
                                 MinWidth="0" MinHeight="0" DockPanel.Dock="Right"/>
-                        <ComboBox Margin="0,0,5,0" />
+                        <ComboBox Name="PartnersComboBox" ItemsSource="{Binding}" DisplayMemberPath="Name" SelectedIndex="0" Margin="0,0,5,0" />
                     </DockPanel>
                     <Grid>
                         <Grid.RowDefinitions>
@@ -56,22 +56,28 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Адрес:" Margin="0,5" />
-                        <TextBlock Text="" Grid.Column="1" Margin="0,5" TextWrapping="Wrap" />
+                        <TextBlock Text="{Binding ElementName=PartnersComboBox, Path=SelectedItem.Adress}" 
+                                   Grid.Column="1" Margin="0,5" TextWrapping="Wrap" />
 
                         <TextBlock Text="Дата:" Grid.Row="1" Margin="0,0,0,5"/>
-                        <TextBlock Text="" Grid.Row="1" Grid.Column="1" Margin="0,0,0,5" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding ElementName=PartnersComboBox, Path=SelectedItem.Data}"
+                                   Grid.Row="1" Grid.Column="1" Margin="0,0,0,5" TextWrapping="Wrap"/>
 
                         <TextBlock Text="Телефон:" Grid.Row="2" Margin="0,0,0,5" />
-                        <TextBlock Text="" Grid.Row="2" Grid.Column="1" Margin="0,0,0,5" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding ElementName=PartnersComboBox, Path=SelectedItem.Phone}" 
+                                   Grid.Row="2" Grid.Column="1" Margin="0,0,0,5" TextWrapping="Wrap"/>
 
                         <TextBlock Text="ИНН:" Grid.Row="3" Margin="0,0,0,5"/>
-                        <TextBlock Text="" Grid.Row="3" Grid.Column="1" Margin="0,0,0,5" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding ElementName=PartnersComboBox, Path=SelectedItem.Inn}"
+                                   Grid.Row="3" Grid.Column="1" Margin="0,0,0,5" TextWrapping="Wrap"/>
 
                         <TextBlock Text="БИК:" Grid.Row="4" Margin="0,0,0,5" />
-                        <TextBlock Text="" Grid.Row="4" Grid.Column="1" Margin="0,0,0,5" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding ElementName=PartnersComboBox, Path=SelectedItem.Bik}" 
+                                   Grid.Row="4" Grid.Column="1" Margin="0,0,0,5" TextWrapping="Wrap"/>
 
                         <TextBlock Text="Директор:" Grid.Row="5"/>
-                        <TextBlock Text="" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding ElementName=PartnersComboBox, Path=SelectedItem.Director}" 
+                                   Grid.Row="5" Grid.Column="1" TextWrapping="Wrap"/>
                     </Grid>
                 </StackPanel>
             </GroupBox>
@@ -81,11 +87,11 @@
                     <DockPanel>
                         <Button Name="StorageAddButton" ToolTip="Добавить" Template="{StaticResource AddButtonTemplate}" 
                                 MinWidth="0" MinHeight="0" DockPanel.Dock="Right"/>
-                        <ComboBox Margin="0,0,5,0" />
+                        <ComboBox Name="StoragesComboBox" ItemsSource="{Binding}" DisplayMemberPath="Name" SelectedIndex="0" Margin="0,0,5,0" />
                     </DockPanel>
                     <DockPanel Margin="0,5,0,0">
                         <TextBlock Text="Адрес:   " />
-                        <TextBlock Text="" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding ElementName=StoragesComboBox, Path=SelectedItem.Ardess}" TextWrapping="Wrap"/>
                     </DockPanel>
                 </StackPanel>
             </GroupBox>
@@ -101,9 +107,9 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Дата поставки:"  Margin="0,0,0,5"/>
-                    <TextBox Grid.Column="1"  Margin="0,0,0,5" />
+                    <TextBox Name="DateTextBox" Grid.Column="1"  Margin="0,0,0,5" />
                     <TextBlock Text="Комментарии:" Grid.Row="1" Margin="0,0,0,5"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" Margin="0,0,0,5" TextWrapping="Wrap" />
+                    <TextBox Name="CommentTextBox" Grid.Row="1" Grid.Column="1" Margin="0,0,0,5" TextWrapping="Wrap" />
                 </Grid>
             </GroupBox>
         </Grid>
@@ -118,6 +124,16 @@
             </StackPanel>
         </DockPanel>
 
-        <DataGrid Grid.Row="3" Margin="5" MinHeight="150" Style="{StaticResource DataGridStyle}" Grid.RowSpan="2"/>
+        <DataGrid  Name="GoodsDataGrid" ItemsSource="{Binding}" Grid.Row="3" Grid.RowSpan="2" Margin="5" MinHeight="150" 
+                   Style="{StaticResource DataGridStyle}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding Path=IdGoods}" />
+                <DataGridTextColumn Header="Название" Binding="{Binding Path=NameGoods}" />
+                <DataGridTextColumn Header="Количество" Binding="{Binding Path=Count}" />
+                <DataGridTextColumn Header="Ед. измер." Binding="{Binding Path=NameModule}" />
+                <DataGridTextColumn Header="Цена за штуку" Binding="{Binding Path=PriceOfUnit}" />
+                <DataGridTextColumn Header="Комментарии" Binding="{Binding Path=Comment}" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

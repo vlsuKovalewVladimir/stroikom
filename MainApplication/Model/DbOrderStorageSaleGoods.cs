@@ -23,6 +23,9 @@ namespace MainApplication.Model
         public int OrderOrStorageOrSale { get; set; }
         public int OrderOrSale_Id { get; set; }
         public bool isDelete { get; set; }
+
+        public string NameGoods { get; set; }
+        public string NameModule { get; set; }
     
         public virtual DbGoods Goods { get; set; }
         public virtual DbModules Module { get; set; }

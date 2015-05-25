@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MainApplication.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,19 @@ namespace MainApplication.View
     /// </summary>
     public partial class StorageView : UserControl
     {
+        private OrderStorageSaleGoodsCollectoin storageGoodsCollectoin;
+
         public StorageView()
         {
             InitializeComponent();
+
+            this.IsVisibleChanged += StorageView_IsVisibleChanged;
+        }
+
+        private void StorageView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            storageGoodsCollectoin = new OrderStorageSaleGoodsCollectoin(2);
+            dg_main.DataContext = storageGoodsCollectoin;
         }
     }
 }

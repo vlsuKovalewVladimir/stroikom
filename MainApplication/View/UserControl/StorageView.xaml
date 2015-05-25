@@ -13,32 +13,31 @@
         </Grid.ColumnDefinitions>
 
         <my:RoundedBox Margin="10" />
-        <DataGrid Name="dg_main" Margin="20" Style="{StaticResource DataGridStyle}" />
+        <DataGrid Name="dg_main" Margin="20" ItemsSource="{Binding}" Style="{StaticResource DataGridStyle}" 
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding Path=IdGoods}" />
+                <DataGridTextColumn Header="Название" Binding="{Binding Path=Goods.Name}" />
+                <DataGridTextColumn Header="Количество" Binding="{Binding Path=Count}" />
+                <DataGridTextColumn Header="Ед. измер." Binding="{Binding Path=Module.LittleModule}" />
+                <DataGridTextColumn Header="Цена за штуку" Binding="{Binding Path=PriceOfUnit}" />
+                <DataGridTextColumn Header="Склад" Binding="{Binding Path=NameStorage}" />
+                <DataGridTextColumn Header="Комментарии" Binding="{Binding Path=Comment}" />
+            </DataGrid.Columns>
+        </DataGrid>
 
         <my:RoundedBox Grid.Column="1" Margin="10"/>
         <ScrollViewer Grid.Column="1" Margin="10" VerticalScrollBarVisibility="Auto" Grid.RowSpan="2">
             <StackPanel>
-
-                <StackPanel Margin="0,10" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Name="b_add" ToolTip="Добавить" MinWidth="50" Template="{StaticResource AddTableButtonTemplate}" />
-                    <Button Name="b_edit" ToolTip="Редактировать" MinWidth="50" Template="{StaticResource EditTableButtonTemplate}" />
-                    <Button Name="b_delete" ToolTip="Удалить" MinWidth="50" Template="{StaticResource DeleteTableButtonTemplate}" />
-                </StackPanel>
-
                 <Button Visibility="Collapsed" Content="Цикл" Height="23" Name="button1" Width="74" Margin="10" />
 
                 <!--Дополнительные данные-->
                 <StackPanel>
-                    <Border BorderBrush="White" BorderThickness="0,1" Padding="10,5">
-                        <StackPanel>
-                            <TextBlock Text="Склад:" Style="{StaticResource TextBlockSectionTitle}" />
-                            <TextBlock  Name="tbl_remontCom" TextWrapping="Wrap" />
-                        </StackPanel>
-                    </Border>
                     <Border BorderBrush="White" BorderThickness="0,0,0,1" Padding="10,5">
                         <StackPanel>
-                            <TextBlock Text="СОСТОЯНИЕ УСТРОЙСТВА ПРИ ПРИЁМЕ:" Style="{StaticResource TextBlockSectionTitle}" />
-                            <TextBlock  Name="tbl_remontSost" TextWrapping="Wrap" />
+                            <TextBlock Text="Склад:" Style="{StaticResource TextBlockSectionTitle}" />
+                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.NameStorage}" TextWrapping="Wrap" />
+                            <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.NameAdress}" TextWrapping="Wrap" />
                         </StackPanel>
                     </Border>
                 </StackPanel>

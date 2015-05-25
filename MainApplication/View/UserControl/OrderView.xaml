@@ -52,7 +52,7 @@
                 <StackPanel>
                     <Border BorderBrush="White" BorderThickness="0,1" Padding="10,5">
                         <StackPanel>
-                            <TextBlock Text="Partner:" Style="{StaticResource TextBlockSectionTitle}" />                        
+                            <TextBlock Text="Партнер" Style="{StaticResource TextBlockSectionTitle}" />                        
                             <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Partner.Name}" />
                             <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Partner.Adress}" />
                             <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Partner.Data}" />
@@ -64,23 +64,17 @@
                     </Border>
                     <Border BorderBrush="White" BorderThickness="0,0,0,1" Padding="10,5">
                         <StackPanel>
-                            <TextBlock Text="Storage" Style="{StaticResource TextBlockSectionTitle}" />
+                            <TextBlock Text="Склад" Style="{StaticResource TextBlockSectionTitle}" />
                             <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Storage.Name}" />
                             <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Storage.Ardess}" />
                         </StackPanel>
                     </Border>
                     <Border BorderBrush="White" BorderThickness="0,0,0,1" Padding="10,5">
                         <StackPanel>
-                            <TextBlock Text="Personnel" Style="{StaticResource TextBlockSectionTitle}" />
+                            <TextBlock Text="Сотрудник" Style="{StaticResource TextBlockSectionTitle}" />
                             <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Personnel.FullName}" />
                             <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Personnel.Phone}" />
                             <TextBlock Text="{Binding ElementName=dg_main, Path=SelectedItem.Personnel.Adress}" />
-                        </StackPanel>
-                    </Border>
-                    <Border BorderBrush="White" BorderThickness="0,0,0,1" Padding="10,5">
-                        <StackPanel>
-                            <TextBlock Text="Деньги" Style="{StaticResource TextBlockSectionTitle}" />
-                            <TextBlock Text="Что-то придумать"  TextWrapping="Wrap" />
                         </StackPanel>
                     </Border>
                     <Border BorderBrush="White" BorderThickness="0,0,0,1" Padding="10,5">

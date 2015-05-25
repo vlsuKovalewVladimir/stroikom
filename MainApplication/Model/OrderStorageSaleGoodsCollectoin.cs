@@ -9,7 +9,16 @@ namespace MainApplication.Model
 {
     class OrderStorageSaleGoodsCollectoin : ObservableCollection<DbOrderStorageSaleGoods>
     {
-        public OrderStorageSaleGoodsCollectoin(){}
+        public OrderStorageSaleGoodsCollectoin() { }
+
+        public OrderStorageSaleGoodsCollectoin(int i)
+        {
+            using (var db = new Db_StroikomEntities())
+            {
+                IQueryable<DbOrderStorageSaleGoods> ossg = db.OrderStorageSaleGoods.Include("Module").Include("Goods").Include("OrderOrSale");
+                ossg.Where(o => o.OrderOrStorageOrSale == i && !o.isDelete).ToList().ForEach(o => { o.NameStorage = o.OrderOrSale.Storage.Name; o.NameAdress = o.OrderOrSale.Storage.Ardess; this.Add(o); });
+            }
+        }
 
         public OrderStorageSaleGoodsCollectoin(DbOrdersOrSales or)
         {

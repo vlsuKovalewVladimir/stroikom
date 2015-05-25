@@ -31,15 +31,32 @@ namespace MainApplication.View
         {
             InitializeComponent();
 
-            ordersOrSalesCollection = new OrdersOrSalesCollection(true);
-            dg_main.DataContext = ordersOrSalesCollection;
-
-            dg_main.MouseDoubleClick += dg_main_MouseDoubleClick;
+            this.IsVisibleChanged += OrderView_IsVisibleChanged;
 
             OrderAddButton.Click += OrderAddButton_Click;
+
+            dg_main.MouseDoubleClick += dg_main_MouseDoubleClick;
         }
 
-        void dg_main_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void OrderView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            OrderAddUserControl.Visibility = System.Windows.Visibility.Collapsed;
+
+            if (Parameters.Instance.CurrentState == State.Order)
+            {
+                ordersOrSalesCollection = new OrdersOrSalesCollection(true);
+                dg_main.DataContext = ordersOrSalesCollection;
+                OrderRemoveButton.Visibility = System.Windows.Visibility.Visible;
+            }
+            if (Parameters.Instance.CurrentState == State.Sale)
+            {
+                ordersOrSalesCollection = new OrdersOrSalesCollection(false);
+                dg_main.DataContext = ordersOrSalesCollection;
+                OrderRemoveButton.Visibility = System.Windows.Visibility.Collapsed;
+            }
+        }
+
+        private void dg_main_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             DbOrdersOrSales os = dg_main.SelectedItem as DbOrdersOrSales;
             if (os == null) return;
@@ -47,9 +64,14 @@ namespace MainApplication.View
             OrderOrSaleGoods.Show(this, os);
         }
 
-        void OrderAddButton_Click(object sender, RoutedEventArgs e)
+        private void OrderAddButton_Click(object sender, RoutedEventArgs e)
         {
-            OrderAddUserControl.Show(ordersOrSalesCollection);           
+            if (Parameters.Instance.CurrentState == State.Order)
+                OrderAddUserControl.Show(ordersOrSalesCollection);
+            if (Parameters.Instance.CurrentState == State.Sale)
+            {
+                
+            }
         }
     }
 }

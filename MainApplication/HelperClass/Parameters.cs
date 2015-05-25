@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace MainApplication
 {
+    enum State { Order, Storage, Sale }
+
     class Parameters
     {
         private Parameters() { }
@@ -32,6 +34,7 @@ namespace MainApplication
         }
 
         public StartWindow StartWindowCurrent { get; set; }
-        public MainWindow MainWindowCurrent { get; set; }
+        public State CurrentState { get; set; }
+        //public MainWindow MainWindowCurrent { get; set; }
     }
 }

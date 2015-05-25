@@ -14,7 +14,7 @@ namespace MainApplication.Model
             using (var db = new Db_StroikomEntities())
             {
                 IQueryable<DbOrdersOrSales> or = db.OrdersOrSales.Include("Personnel").Include("Status").Include("Storage").Include("Partner").Include("OrderStorageSaleGoods");
-                or.Where(o => o.isOrder == isOrder).ToList().ForEach(o =>
+                or.Where(o => o.isOrder == isOrder && o.Status_id != 3).ToList().ForEach(o =>
                 {
                     o.Summa = o.OrderStorageSaleGoods.Sum(s => s.Count * s.PriceOfUnit);
                     this.Add(o);

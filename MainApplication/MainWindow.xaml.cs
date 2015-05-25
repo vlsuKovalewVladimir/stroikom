@@ -59,10 +59,22 @@ namespace MainApplication
                 StorageUserControl.Visibility = System.Windows.Visibility.Collapsed;
 
             if (textBlock == MenuOrderTextBlock)
+            {
+                Parameters.Instance.CurrentState = State.Order;
                 OrderUserControl.Visibility = System.Windows.Visibility.Visible;
+            }
 
             if (textBlock == MenuStorageTextBlock)
-                StorageUserControl.Visibility = System.Windows.Visibility.Visible; 
+            {
+                Parameters.Instance.CurrentState = State.Storage;
+                StorageUserControl.Visibility = System.Windows.Visibility.Visible;
+            }
+
+            if (textBlock == MenuSaleTextBlock)
+            {
+                Parameters.Instance.CurrentState = State.Sale;
+                OrderUserControl.Visibility = System.Windows.Visibility.Visible;
+            }
         }
 
 

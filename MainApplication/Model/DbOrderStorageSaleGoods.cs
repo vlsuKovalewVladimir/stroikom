@@ -26,6 +26,9 @@ namespace MainApplication.Model
 
         public string NameGoods { get; set; }
         public string NameModule { get; set; }
+
+        public string NameStorage { get; set; }
+        public string NameAdress { get; set; }
     
         public virtual DbGoods Goods { get; set; }
         public virtual DbModules Module { get; set; }

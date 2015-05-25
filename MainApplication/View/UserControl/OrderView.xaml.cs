@@ -66,12 +66,7 @@ namespace MainApplication.View
 
         private void OrderAddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Parameters.Instance.CurrentState == State.Order)
-                OrderAddUserControl.Show(ordersOrSalesCollection);
-            if (Parameters.Instance.CurrentState == State.Sale)
-            {
-                
-            }
+            OrderAddUserControl.Show(ordersOrSalesCollection);
         }
     }
 }

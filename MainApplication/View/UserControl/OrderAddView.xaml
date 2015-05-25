@@ -38,8 +38,8 @@
             <GroupBox Foreground="{StaticResource DisabledForegroundBrush}" Header="Партнеры" Margin="5" Grid.RowSpan="2">
                 <StackPanel Margin="5">
                     <DockPanel>
-                        <Button Name="PartnerAddButton" ToolTip="Добавить" Template="{StaticResource AddButtonTemplate}" 
-                                MinWidth="0" MinHeight="0" DockPanel.Dock="Right"/>
+                        <!--<Button Name="PartnerAddButton" ToolTip="Добавить" Template="{StaticResource AddButtonTemplate}" 
+                                MinWidth="0" MinHeight="0" DockPanel.Dock="Right"/>-->
                         <ComboBox Name="PartnersComboBox" ItemsSource="{Binding}" DisplayMemberPath="Name" SelectedIndex="0" Margin="0,0,5,0" />
                     </DockPanel>
                     <Grid>
@@ -85,8 +85,8 @@
             <GroupBox Foreground="{StaticResource DisabledForegroundBrush}" Header="Склад" Margin="5" Grid.Column="1">
                 <StackPanel Margin="5">
                     <DockPanel>
-                        <Button Name="StorageAddButton" ToolTip="Добавить" Template="{StaticResource AddButtonTemplate}" 
-                                MinWidth="0" MinHeight="0" DockPanel.Dock="Right"/>
+                        <!--<Button Name="StorageAddButton" ToolTip="Добавить" Template="{StaticResource AddButtonTemplate}" 
+                                MinWidth="0" MinHeight="0" DockPanel.Dock="Right"/>-->
                         <ComboBox Name="StoragesComboBox" ItemsSource="{Binding}" DisplayMemberPath="Name" SelectedIndex="0" Margin="0,0,5,0" />
                     </DockPanel>
                     <DockPanel Margin="0,5,0,0">
@@ -119,7 +119,6 @@
             <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
                 
                 <Button Name="GoodsAddButton" ToolTip="Добавить товар" MinWidth="40" Template="{StaticResource AddTableButtonTemplate}" />
-                <Button Name="GoodsEditButton" ToolTip="Редактировать товар" MinWidth="40" Template="{StaticResource EditTableButtonTemplate}" />
                 <Button Name="GoodsRemoveButton" ToolTip="Удалить товар" MinWidth="50" Template="{StaticResource DeleteTableButtonTemplate}" />
             </StackPanel>
         </DockPanel>

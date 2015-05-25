@@ -22,7 +22,7 @@ namespace MainApplication.Model
             }
         }
 
-        public void AddOrdersOrSales(DbOrdersOrSales ordersOrSales, OrderStorageSaleGoodsCollectoin orderStorageSaleGoodsCollectoin)
+        public void AddOrders(DbOrdersOrSales ordersOrSales, OrderStorageSaleGoodsCollectoin orderStorageSaleGoodsCollectoin)
         {
             using (var db = new Db_StroikomEntities())
             {
@@ -36,10 +36,8 @@ namespace MainApplication.Model
 
                 DbOrdersOrSales tmp = or.Single(o => o.IdOrderOrSale == ordersOrSales.IdOrderOrSale);
                 tmp.Summa = tmp.OrderStorageSaleGoods.Sum(s => s.Count * s.PriceOfUnit);
-                this.Add(tmp);
-                
+                this.Add(tmp);             
             }
         }
-
     }
 }

@@ -35,11 +35,7 @@ namespace MainApplication.View
             SaveButton.Click += SaveButton_Click;
             ExitButton.Click += ExitButton_Click;
 
-            PartnerAddButton.Click += PartnerAddButton_Click;
-            StorageAddButton.Click += StorageAddButton_Click;
-
             GoodsAddButton.Click += GoodsAddButton_Click;
-            GoodsEditButton.Click += GoodsEditButton_Click;
             GoodsRemoveButton.Click += GoodsRemoveButton_Click;
         }
 
@@ -77,21 +73,29 @@ namespace MainApplication.View
                 return;
             }
 
+            int status_id = 1;
+            bool isorder = true;
+            if (Parameters.Instance.CurrentState == State.Sale)
+            {
+                status_id = 4;
+                isorder = false;
+            }
+
             int storage_id = (StoragesComboBox.SelectedItem as DbStorages).IdStorage;
             int partner_id = (PartnersComboBox.SelectedItem as DbPartners).IdPartner;
 
             DbOrdersOrSales ordersOrSales = new DbOrdersOrSales()
             {
                 DateOrderOrSale = DateTime.Now,
-                Status_id = 1,
+                Status_id = status_id,
                 Partner_id = partner_id,
                 PeriodDate = DateTime.Now,
                 Storage_id = storage_id,
-                isOrder = true,
+                isOrder = isorder,
                 Personnel_id = Parameters.Instance.Personnel.IdPersonnel
             };
 
-            ordersOrSalesCollection.AddOrdersOrSales(ordersOrSales, orderStorageSaleGoodsCollectoin);
+            ordersOrSalesCollection.AddOrders(ordersOrSales, orderStorageSaleGoodsCollectoin);
 
             this.Visibility = System.Windows.Visibility.Collapsed;
         }
@@ -101,30 +105,20 @@ namespace MainApplication.View
             this.Visibility = Visibility.Collapsed;
         }
 
-        void PartnerAddButton_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        void StorageAddButton_Click(object sender, RoutedEventArgs e)
-        {
-           // DbStorages st = new DbStorages() { Name = "sdsd", Ardess = "adres" };
-            //storagesCollection.AddStorage(st);
-        }
-
         void GoodsAddButton_Click(object sender, RoutedEventArgs e)
         {
-            DbOrderStorageSaleGoods ossg = OrderAddGoodsWindow.Show(this);
+            DbOrderStorageSaleGoods ossg = null;
+            if (Parameters.Instance.CurrentState == State.Order)
+                ossg = OrderAddGoodsWindow.Show(this);
+            if (Parameters.Instance.CurrentState == State.Sale)
+                ossg = SaleAddGoods.Show(this);
             if (ossg != null)
             {
                 ossg.OrderOrStorageOrSale = 1;
+                if (Parameters.Instance.CurrentState == State.Sale)
+                    ossg.OrderOrStorageOrSale = 3;
                 orderStorageSaleGoodsCollectoin.AddGoodsNoSaveDb(ossg);
             }  
-        }
-
-        void GoodsEditButton_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         void GoodsRemoveButton_Click(object sender, RoutedEventArgs e)

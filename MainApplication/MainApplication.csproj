@@ -159,6 +159,9 @@
     <Compile Include="View\Windows\OrderOrSaleGoods.xaml.cs">
       <DependentUpon>OrderOrSaleGoods.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\SaleAddGoods.xaml.cs">
+      <DependentUpon>SaleAddGoods.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\WpfMessageBox.xaml.cs">
       <DependentUpon>WpfMessageBox.xaml</DependentUpon>
     </Compile>
@@ -214,6 +217,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\OrderOrSaleGoods.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\SaleAddGoods.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

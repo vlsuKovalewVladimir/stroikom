@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:my="clr-namespace:MainApplication.View"
         Icon="/MainApplication;component/Resources/icon.ico"
-        Title="Title" MinWidth="1024" MinHeight="768"
+        Title="" MinWidth="1024" MinHeight="768"
         Width="1024" Height="768"
         WindowState="Maximized">
     <Window.Background>
@@ -24,22 +24,11 @@
         <!--Верхний заголовок-->
         <TextBlock Text="Стройком" TextWrapping="NoWrap" Foreground="#FFC4CFD6" FontSize="72" Opacity="0.85" TextAlignment="Left" FontWeight="Bold" />
 
-        <Border Name="bor_paramSearch" Visibility="Collapsed" Background="{StaticResource NormalBrush}" BorderThickness="1" 
-                CornerRadius="5" BorderBrush="{StaticResource SolidBorderBrush}" VerticalAlignment="Bottom" HorizontalAlignment="Right"
-                Padding="2" Margin="0,0,10,0">
-            <StackPanel>
-                <TextBlock Name="tbl_borParam" Text="Поиск по полю Номер" />
-
-                <RadioButton Name="rb_search1" Visibility="Collapsed" Content="Номер" IsChecked="True" Tag="0"/>
-                <RadioButton Name="rb_search2" Visibility="Collapsed" Content="Дата" Tag="1" />
-                <RadioButton Name="rb_search3" Visibility="Collapsed" Content="ФИО клиена" Tag="2" />
-            </StackPanel>
-        </Border>
 
         <!--Меню + Поиск-->
         <DockPanel Grid.Row="1">
 
-            <Border Name="bor_search"
+            <!--<Border Name="bor_search"
                     DockPanel.Dock="Right" 
                     Margin="10" BorderThickness="2" 
                     BorderBrush="{StaticResource DisabledBackgroundBrush}" 
@@ -52,12 +41,12 @@
                     <Button Name="b_search" Template="{StaticResource AddButtonTemplate}" MinWidth="20" 
                             ToolTip="Дополнительные параметры поиска"  />
                 </StackPanel>
-            </Border>
+            </Border> -->
 
             <Border Margin="10" Background="{StaticResource headerBarBG}" BorderBrush="{StaticResource DisabledBackgroundBrush}" 
                 BorderThickness="2" CornerRadius="10">
                 <DockPanel Margin="5">
-                    <TextBlock Name="tbl6" Text="Статистика" ToolTip="Открыть статистику" DockPanel.Dock="Right" 
+                    <TextBlock Name="MenuStatisticsTextBlock" Text="Статистика" ToolTip="Открыть статистику" DockPanel.Dock="Right" 
                            FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,20,0" 
                            Foreground="{StaticResource DisabledBackgroundBrush}" />
                     <StackPanel Orientation="Horizontal">
@@ -66,7 +55,7 @@
                         <TextBlock Text="Склад" Name="MenuStorageTextBlock" ToolTip="Открыть таблицу мастер" Style="{StaticResource TextBlockMenuStyle}" />
                         <TextBlock Text="Продажи"  Name="MenuSaleTextBlock" Style="{StaticResource TextBlockMenuStyle}" />
                         <TextBlock Text="Финансы" Name="MenuCashTextBlock" ToolTip="Открыть таблицу архив" Style="{StaticResource TextBlockMenuStyle}" />
-                        <TextBlock Text="Задачи" Name="MenuTaskTextBlock" ToolTip="Открыть таблицу архив" Style="{StaticResource TextBlockMenuStyle}" />
+                        <TextBlock Text="Задачи" Visibility="Collapsed" Name="MenuTaskTextBlock" ToolTip="Открыть таблицу архив" Style="{StaticResource TextBlockMenuStyle}" />
                     </StackPanel>
                 </DockPanel>
             </Border>
@@ -87,6 +76,9 @@
         <Grid Grid.Row="2" Grid.ColumnSpan="2">
             <my:OrderView x:Name="OrderUserControl" />
             <my:StorageView x:Name="StorageUserControl" Visibility="Collapsed" />
+            <my:CashView x:Name="CashUserControl" Visibility="Collapsed" />
+            <my:TaskView x:Name="TaskUserControl" Visibility="Collapsed" />
+            <my:StatisticsView x:Name="StatisticsUserControl" Visibility="Collapsed" />
         </Grid>
          
     </Grid>

@@ -63,8 +63,8 @@
                     <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
 
                         <Button x:Name="GoodsAddButton" ToolTip="Добавить товар" MinWidth="40" Template="{StaticResource AddTableButtonTemplate}" />
-                        <Button x:Name="GoodsEditButton" ToolTip="Редактировать товар" MinWidth="40" Template="{StaticResource EditTableButtonTemplate}" />
-                        <Button x:Name="GoodsRemoveButton" ToolTip="Удалить товар" MinWidth="50" Template="{StaticResource DeleteTableButtonTemplate}" />
+                        <!--<Button x:Name="GoodsEditButton" ToolTip="Редактировать товар" MinWidth="40" Template="{StaticResource EditTableButtonTemplate}" />
+                        <Button x:Name="GoodsRemoveButton" ToolTip="Удалить товар" MinWidth="50" Template="{StaticResource DeleteTableButtonTemplate}" />-->
                     </StackPanel>
                 </DockPanel>
 

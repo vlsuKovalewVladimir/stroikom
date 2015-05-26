@@ -43,7 +43,7 @@
                 <StackPanel Margin="0,10" Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Name="OrderAddButton" ToolTip="Добавить" MinWidth="50" Template="{StaticResource AddTableButtonTemplate}" />
                     <Button Name="OrderEditButton" ToolTip="Редактировать" MinWidth="50" Template="{StaticResource EditTableButtonTemplate}" />
-                    <Button Name="OrderRemoveButton" ToolTip="Удалить" MinWidth="50" Template="{StaticResource DeleteTableButtonTemplate}" />
+                    <!--<Button Name="OrderRemoveButton" ToolTip="Удалить" MinWidth="50" Template="{StaticResource DeleteTableButtonTemplate}" />-->
                 </StackPanel>
 
                 <Button Visibility="Collapsed" Content="Цикл" Height="23" Name="button1" Width="74" Margin="10" />

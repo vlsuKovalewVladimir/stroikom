@@ -39,6 +39,7 @@ namespace MainApplication.View
             goodsCollection = new GoodsCollection();
             GoodsDataGrid.DataContext = goodsCollection;
 
+            GoodsAddButton.Click += GoodsAddButton_Click;
             ApplyButton.Click += ApplyButton_Click;
             CancelButton.Click += ExitButton_Click;
             ExitButton.Click += ExitButton_Click;
@@ -110,9 +111,14 @@ namespace MainApplication.View
             {
                 System.Diagnostics.Debug.Print(ex.Message);
                 WpfMessageBox.Show(this, "Пожалуйста введите корректные данные", "Ошибка", MessageBoxImage.Error);
-            }
+            }         
+        }
 
-            
+        void GoodsAddButton_Click(object sender, RoutedEventArgs e)
+        {
+            DbGoods goods = GoodsAddWindow.Show(this);
+            if (goods == null) return;
+            goodsCollection.AddGoods(goods);
         }
 
         void ExitButton_Click(object sender, RoutedEventArgs e)

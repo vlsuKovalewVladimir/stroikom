@@ -17,25 +17,25 @@ using System.Windows.Shapes;
 namespace MainApplication.View
 {
     /// <summary>
-    /// Логика взаимодействия для StorageView.xaml
+    /// Логика взаимодействия для TaskView.xaml
     /// </summary>
-    public partial class StorageView : UserControl
+    public partial class TaskView : UserControl
     {
-        private OrderStorageSaleGoodsCollectoin storageGoodsCollectoin;
+        private TaskCollection taskCollection;
 
-        public StorageView()
+        public TaskView()
         {
             InitializeComponent();
 
-            this.IsVisibleChanged += StorageView_IsVisibleChanged;
+            this.IsVisibleChanged += TaskView_IsVisibleChanged;
         }
 
-        private void StorageView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        void TaskView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if ((bool)e.OldValue) return;
 
-            storageGoodsCollectoin = new OrderStorageSaleGoodsCollectoin(2);
-            dg_main.DataContext = storageGoodsCollectoin;
+            taskCollection = new TaskCollection();
+            dg_main.DataContext = taskCollection;
         }
     }
 }

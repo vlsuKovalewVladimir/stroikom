@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="MainApplication.View.StatisticsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+             xmlns:my="clr-namespace:MainApplication.View"
+             xmlns:obj="clr-namespace:MainApplication.Model"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="1024" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <my:RoundedBox Grid.RowSpan="2" />
+        
+        <StackPanel Orientation="Horizontal" Margin="20">
+            <Button Content="Партнеры" Name="PartnersButton" Margin="0,0,10,0" />
+            <Button Content="Товары на складе" Name="GoodsButton" />
+        </StackPanel>
+        
+        <chartingToolkit:Chart Name="char1" Title="Статистика" LegendTitle="Легенда" BorderThickness="0" Margin="10" Grid.Row="1">
+            <chartingToolkit:PieSeries Name="ps_stat" />
+        </chartingToolkit:Chart>
+    </Grid>
+</UserControl>

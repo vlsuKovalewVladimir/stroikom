@@ -34,25 +34,53 @@ namespace MainApplication.View
             this.IsVisibleChanged += OrderView_IsVisibleChanged;
 
             OrderAddButton.Click += OrderAddButton_Click;
+            OrderEditButton.Click += OrderEditButton_Click;
 
             dg_main.MouseDoubleClick += dg_main_MouseDoubleClick;
         }
 
+        void OrderEditButton_Click(object sender, RoutedEventArgs e)
+        {
+            DbOrdersOrSales os = dg_main.SelectedItem as DbOrdersOrSales;
+            if (os == null) 
+            {
+                WpfMessageBox.Show(this, "Выберите", "не выбрана", MessageBoxImage.Error);
+                return;
+            }
+
+            ordersOrSalesCollection.EditStatus(os);
+
+            if (Parameters.Instance.CurrentState == State.Order)
+            {
+                ordersOrSalesCollection = new OrdersOrSalesCollection(true);
+                dg_main.DataContext = ordersOrSalesCollection;
+                //OrderRemoveButton.Visibility = System.Windows.Visibility.Visible;
+            }
+            if (Parameters.Instance.CurrentState == State.Sale)
+            {
+                ordersOrSalesCollection = new OrdersOrSalesCollection(false);
+                dg_main.DataContext = ordersOrSalesCollection;
+                //OrderRemoveButton.Visibility = System.Windows.Visibility.Collapsed;
+            }
+        }
+
         private void OrderView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
+            if ((bool)e.OldValue) return;
+
             OrderAddUserControl.Visibility = System.Windows.Visibility.Collapsed;
 
             if (Parameters.Instance.CurrentState == State.Order)
             {
                 ordersOrSalesCollection = new OrdersOrSalesCollection(true);
                 dg_main.DataContext = ordersOrSalesCollection;
-                OrderRemoveButton.Visibility = System.Windows.Visibility.Visible;
+                //OrderRemoveButton.Visibility = System.Windows.Visibility.Visible;
             }
             if (Parameters.Instance.CurrentState == State.Sale)
             {
                 ordersOrSalesCollection = new OrdersOrSalesCollection(false);
                 dg_main.DataContext = ordersOrSalesCollection;
-                OrderRemoveButton.Visibility = System.Windows.Visibility.Collapsed;
+                //OrderRemoveButton.Visibility = System.Windows.Visibility.Collapsed;
             }
         }
 

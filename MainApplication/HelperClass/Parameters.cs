@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MainApplication
 {
-    enum State { Order, Storage, Sale }
+    enum State { Order, Storage, Sale, Cash, Task, Statistics }
 
     class Parameters
     {

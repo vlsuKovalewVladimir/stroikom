@@ -8,25 +8,26 @@ using System.Threading.Tasks;
 
 namespace MainApplication.Model
 {
-    class GoodsCollection : ObservableCollection<DbGoods>
+    class CashCollection : ObservableCollection<DbCash>
     {
-        public GoodsCollection()
+        public CashCollection()
         {
             using (var db = new Db_StroikomEntities())
             {
-                DbSet<DbGoods> goods = db.Goods;
-                goods.ToList().ForEach(g => this.Add(g));
+                IQueryable<DbCash> cash = db.Cash.Include("Operation").Include("OrderOrSale");
+                cash.ToList().ForEach(c => this.Add(c));
             }
         }
 
-        public void AddGoods(DbGoods goods)
+        public void AddCash(DbCash cash)
         {
             using (var db = new Db_StroikomEntities())
             {
-                db.Goods.Add(goods);
+                db.Cash.Add(cash);
                 db.SaveChanges();
-                this.Add(goods);
+
+                this.Add(cash);
             }
-        }
+        } 
     }
 }

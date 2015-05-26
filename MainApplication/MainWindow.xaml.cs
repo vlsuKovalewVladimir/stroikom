@@ -28,17 +28,27 @@ namespace MainApplication
             PersonnelNameTextBlock.Text = Parameters.Instance.Personnel.LittleName;
             PersonnelPostTextBlock.Text = Parameters.Instance.PersonnelPost.ToString();
 
+            switch (Parameters.Instance.Personnel.Post_id)
+            {
+                case 3:
+                    MenuCashTextBlock.Visibility = System.Windows.Visibility.Collapsed;
+                    MenuStatisticsTextBlock.Visibility = System.Windows.Visibility.Collapsed;
+                    break;
+            }
+
             MenuOrderTextBlock.MouseUp += MenuTextBlock_MouseUp;
             MenuStorageTextBlock.MouseUp += MenuTextBlock_MouseUp;
             MenuSaleTextBlock.MouseUp += MenuTextBlock_MouseUp;
             MenuCashTextBlock.MouseUp += MenuTextBlock_MouseUp;
             MenuTaskTextBlock.MouseUp += MenuTextBlock_MouseUp;
+            MenuStatisticsTextBlock.MouseUp += MenuTextBlock_MouseUp;
 
             MenuOrderTextBlock.MouseDown += MenuTextBlock_MouseDown;
             MenuStorageTextBlock.MouseDown += MenuTextBlock_MouseDown;
             MenuSaleTextBlock.MouseDown += MenuTextBlock_MouseDown;
             MenuCashTextBlock.MouseDown += MenuTextBlock_MouseDown;
             MenuTaskTextBlock.MouseDown += MenuTextBlock_MouseDown;
+            MenuStatisticsTextBlock.MouseDown += MenuTextBlock_MouseDown;
         }
 
         private void MenuTextBlock_MouseUp(object sender, MouseButtonEventArgs e)
@@ -46,8 +56,8 @@ namespace MainApplication
             TextBlock textBlock = (TextBlock)sender;
             var backColor = new RadialGradientBrush(Color.FromArgb(154, 255, 255, 255), Colors.Transparent);
             MenuOrderTextBlock.Background = MenuStorageTextBlock.Background =
-                MenuSaleTextBlock.Background = MenuCashTextBlock.Background = 
-                MenuTaskTextBlock.Background = null;
+                MenuSaleTextBlock.Background = MenuCashTextBlock.Background =
+                MenuTaskTextBlock.Background = MenuStatisticsTextBlock.Background = null;
             textBlock.Background = backColor;
         }
 
@@ -56,7 +66,10 @@ namespace MainApplication
             TextBlock textBlock = sender as TextBlock;
 
             OrderUserControl.Visibility =
-                StorageUserControl.Visibility = System.Windows.Visibility.Collapsed;
+                StorageUserControl.Visibility = 
+                CashUserControl.Visibility = 
+                TaskUserControl.Visibility =
+                StatisticsUserControl.Visibility = System.Windows.Visibility.Collapsed;
 
             if (textBlock == MenuOrderTextBlock)
             {
@@ -75,6 +88,22 @@ namespace MainApplication
                 Parameters.Instance.CurrentState = State.Sale;
                 OrderUserControl.Visibility = System.Windows.Visibility.Visible;
             }
+
+            if (textBlock == MenuCashTextBlock)
+            {
+                Parameters.Instance.CurrentState = State.Cash;
+                CashUserControl.Visibility = System.Windows.Visibility.Visible;
+            }
+            if (textBlock == MenuTaskTextBlock)
+            {
+                Parameters.Instance.CurrentState = State.Task;
+                TaskUserControl.Visibility = System.Windows.Visibility.Visible;
+            }
+            if (textBlock == MenuStatisticsTextBlock)
+            {
+                Parameters.Instance.CurrentState = State.Statistics;
+                StatisticsUserControl.Visibility = System.Windows.Visibility.Visible;
+            }   
         }
 
 

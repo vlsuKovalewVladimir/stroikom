@@ -104,45 +104,47 @@ namespace MainApplication
                 {
                     StatusTextBlock.Text = "Подключение к серверу базы данных..";
                 });
-            using (var db = new Model.Db_StroikomEntities()) 
+            
+            try
             {
-                try
+                using (var db = new Model.Db_StroikomEntities()) 
                 {
                     var p = db.Personnels.ToList().Single(pes =>
-                      (pes.LastName + pes.IdPersonnel == this.login) && pes.Password == this.password);
+                        (pes.LastName + pes.IdPersonnel == this.login) && pes.Password == this.password);
                     Parameters.Instance.Personnel = p;
                 }
-                catch (System.InvalidOperationException ex)
-                {
-                    System.Diagnostics.Debug.Print(ex.Message);
-
-                    this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal,
-                    (ThreadStart)delegate()
-                    {
-                        WpfMessageBox.Show(this, "Неверный логин или пароль", "Ошибка авторизации", MessageBoxImage.Error);
-                        var tmpАuthorizationWindow = new AuthorizationWindow();
-                        tmpАuthorizationWindow.Show();
-                        this.Close();
-                    });
-
-                    return;
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.Print(ex.Message);
-
-                    this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal,
-                    (ThreadStart)delegate()
-                    {
-                        StatusTextBlock.Text = "Ошибка при подключении";
-                        ProblemButtonStackPanel.Visibility = Visibility.Visible;
-                        ProgressBarView.Visibility = Visibility.Collapsed;
-                    });
-
-                    return;
-                }
-                
             }
+            catch (System.InvalidOperationException ex)
+            {
+                System.Diagnostics.Debug.Print(ex.Message);
+
+                this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal,
+                (ThreadStart)delegate()
+                {
+                    WpfMessageBox.Show(this, "Неверный логин или пароль", "Ошибка авторизации", MessageBoxImage.Error);
+                    var tmpАuthorizationWindow = new AuthorizationWindow();
+                    tmpАuthorizationWindow.Show();
+                    this.Close();
+                });
+
+                return;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(ex.Message);
+
+                this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal,
+                (ThreadStart)delegate()
+                {
+                    StatusTextBlock.Text = "Ошибка при подключении";
+                    ProblemButtonStackPanel.Visibility = Visibility.Visible;
+                    ProgressBarView.Visibility = Visibility.Collapsed;
+                });
+
+                return;
+            }
+                
+            
 
             this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal,
                     (ThreadStart)delegate()

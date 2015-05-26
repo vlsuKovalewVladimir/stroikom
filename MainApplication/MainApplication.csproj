@@ -52,6 +52,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit">
+      <HintPath>.\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -63,6 +66,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit">
+      <HintPath>.\WPFToolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -70,6 +76,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="HelperClass\Crypt.cs" />
+    <Compile Include="Model\CashCollection.cs" />
     <Compile Include="Model\DbCash.cs">
       <DependentUpon>StroikomDbModel.tt</DependentUpon>
     </Compile>
@@ -111,6 +118,7 @@
     </Compile>
     <Compile Include="Model\GoodsCollection.cs" />
     <Compile Include="Model\ModuleCollection.cs" />
+    <Compile Include="Model\OperationsCollection.cs" />
     <Compile Include="Model\OrdersOrSalesCollection.cs" />
     <Compile Include="Model\OrderStorageSaleGoodsCollectoin.cs" />
     <Compile Include="Model\PartnersCollection.cs" />
@@ -132,11 +140,18 @@
       <DependentUpon>StroikomDbModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="HelperClass\Parameters.cs" />
+    <Compile Include="Model\TaskCollection.cs" />
     <Compile Include="SettingsConnectionWindow.xaml.cs">
       <DependentUpon>SettingsConnectionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl\CashAddView.xaml.cs">
+      <DependentUpon>CashAddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl\CashView.xaml.cs">
+      <DependentUpon>CashView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControl\OrderAddView.xaml.cs">
       <DependentUpon>OrderAddView.xaml</DependentUpon>
@@ -150,8 +165,17 @@
     <Compile Include="View\UserControl\RoundedBox.xaml.cs">
       <DependentUpon>RoundedBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControl\StatisticsView.xaml.cs">
+      <DependentUpon>StatisticsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControl\StorageView.xaml.cs">
       <DependentUpon>StorageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl\TaskView.xaml.cs">
+      <DependentUpon>TaskView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\GoodsAddWindow.xaml.cs">
+      <DependentUpon>GoodsAddWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\OrderAddGoodsWindow.xaml.cs">
       <DependentUpon>OrderAddGoodsWindow.xaml</DependentUpon>
@@ -192,6 +216,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\UserControl\CashAddView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl\CashView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\UserControl\OrderAddView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -208,7 +240,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\UserControl\StatisticsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\UserControl\StorageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl\TaskView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\GoodsAddWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
